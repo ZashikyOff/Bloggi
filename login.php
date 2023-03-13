@@ -27,8 +27,9 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
         var_dump($results);
         if (password_verify($password, $results['hash'])) {
           // Connexion réussie
-          header('Location: index.php');
           $_SESSION["email"] = $_POST["email"];
+          $_SESSION["role"] = $results["role"];
+          header('Location: index.php');
         } else {
           echo 'Mot de passe incorrect';
         }

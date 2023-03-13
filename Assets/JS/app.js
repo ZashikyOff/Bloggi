@@ -17,3 +17,5 @@ exit.addEventListener("click", () => {
   modal_container.classList.toggle("active");
   modal.style.display = "block";
 });
+
+// Scroll button ----------------------------------------
