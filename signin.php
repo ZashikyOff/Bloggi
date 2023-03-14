@@ -63,6 +63,15 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha"
     <header>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
+        <p class="etat_co"><?php
+                            if (isset($_SESSION["email"])) {
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "Connecter";
+                            } else {
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "Non Connecter";
+                            }
+                            ?></p>
     </header>
     <main>
         <form action="" method="post">

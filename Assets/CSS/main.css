@@ -3,6 +3,26 @@
   margin: 0;
   box-sizing: border-box;
 }
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: 10px;
+  scrollbar-color: #368f8b transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #368f8b;
+  border-radius: 7px;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -12,10 +32,20 @@ body {
 }
 header {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50%;
+}
+header h1 {
+  margin-top: 10px;
+  font-size: 2.5rem;
+}
+header .logoblob{
+  height: 150px;
+  width: 150px;
+  margin-top: 15px;
+  object-fit: cover;
 }
 header .mod {
   position: absolute;

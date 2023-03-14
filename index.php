@@ -36,18 +36,22 @@ if ($query2->execute()) {
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
-        <a href="login.php">Login</a>
-        <a href="">Contact</a>
         <?php
+        if (!isset($_SESSION["email"])) {
+            echo "<a href='login.php'>Login</a>";
+        } else {
+        }
         if (isset($_SESSION["email"])) {
             echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
         } else {
         }
         ?>
+        <a href="">Contact</a>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
         <a href="new_article.php"><i class="fa-solid fa-plus fa-xl new_article"></i></a>
+        <img src="Assets/IMG/logo.png" class="logoblob">
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
