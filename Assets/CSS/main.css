@@ -94,6 +94,14 @@ main.index {
   flex-direction: column;
   align-items: center;
 }
+main.index .middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+  min-height: 350px;
+}
 .alarm{
     position: absolute;
     top: 35vh;
@@ -120,6 +128,22 @@ main.index {
 .search {
     margin-top: 50px;
 }
+main.index .middle button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 5rem;
+  color: black;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+main.index .middle button:hover{
+  scale: 115%;
+}
 .new-release {
   display: flex;
   flex-direction: column;
@@ -127,9 +151,10 @@ main.index {
   justify-content: center;
   width: 300px;
   height: 300px;
-  margin-top: 50px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
+  transition: 0.5s ease;
+  scroll-behavior: smooth;
 }
 .new-release .article {
   display: flex;
@@ -142,7 +167,29 @@ main.index {
   padding: 5px;
   background-color: #364b57cb;
 }
-
+.top-topics{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.5s ease;
+  scroll-behavior: smooth;
+}
+.top-topics .article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+  width: 80%;
+  min-height: 280px;
+  height: 80%;
+  padding: 5px;
+  background-color: #364b57cb;
+}
 /* Page Profile */
 
 .infos {

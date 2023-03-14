@@ -19,7 +19,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha"
     // Pays pas obligatoire
     $pays = htmlspecialchars($_POST["pays"]);
     // Pseudo du compte
-    $pseudo = isset($_POST["pseudo"]) ;
+    $pseudo = htmlspecialchars($_POST["pseudo"]);
 
     //A Condition que les deux password soit pareil
     if ($_POST["password"] == $_POST["confirmpassword"]) {

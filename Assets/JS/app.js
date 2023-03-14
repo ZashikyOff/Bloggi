@@ -3,9 +3,7 @@
 const modal = document.querySelector(".mod");
 const modal_container = document.querySelector(".modal_container");
 const exit = document.querySelector(".close_mod");
-console.log(modal);
-console.log(modal_container);
-console.log(exit);
+
 if(modal){
   modal.addEventListener("click", () => {
     modal_container.classList.toggle("active");
@@ -19,3 +17,28 @@ exit.addEventListener("click", () => {
 });
 
 // Scroll button ----------------------------------------
+// New Release 
+
+const buttonRight = document.getElementById("slideright");
+
+buttonRight.onclick = () => {
+  document.getElementById("new").scrollLeft += 300;
+};
+const buttonLeft = document.getElementById("sliderleft");
+
+buttonLeft.onclick = () => {
+  document.getElementById("new").scrollLeft -= 300;
+};
+
+// Top tpics
+
+const buttonRightLike = document.getElementById("sliderightLike");
+
+buttonRightLike.onclick = () => {
+  document.getElementById("top").scrollLeft += 300;
+};
+const buttonLeftLike = document.getElementById("sliderleftLike");
+
+buttonLeftLike.onclick = () => {
+  document.getElementById("top").scrollLeft -= 300;
+};

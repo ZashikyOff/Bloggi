@@ -19,6 +19,16 @@ if ($query->execute()) {
     // traitement des résultats
     $results = $query->fetchAll();
 }
+$mostlike = "SELECT * FROM article ORDER BY like_article DESC LIMIT 10";
+
+// Préparer la requête
+$query2 = $lienDB->prepare($mostlike);
+
+// Exécution de la requête
+if ($query2->execute()) {
+    // traitement des résultats
+    $resultsmostlike = $query2->fetchAll();
+}
 
 ?>
 
@@ -62,21 +72,45 @@ if ($query->execute()) {
         <div class="search">
             <input type="text">
         </div>
-        <div class="new-release" id="new">
-            <?php
-            $x = -1;
+        <div class="middle">
+            <button id="sliderleft" type="button"><i class="fa-solid fa-caret-left"></i></button>
+            <div class="new-release" id="new">
+                <?php
+                $x = -1;
 
-            while ($x < (count($results) - 1)) {
-                $x++;
-            ?><div class="article">
-                    <h3><?= $results[$x]["titre"] ?></h3>
-                    <p><?= $results[$x]["contenu"] ?></p>
-                    <p><?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
-                    <p><?= $results[$x]["like_article"] ?></p>
-                </div><?php
+                while ($x < (count($results) - 1)) {
+                    $x++;
+                ?><div class="article">
+                        <h3><?= $results[$x]["titre"] ?></h3>
+                        <p><?= substr($results[$x]["contenu"],0,50) ?>...</p>
+                        <p><?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
+                        <p><?= $results[$x]["like_article"] ?></p>
+                    </div><?php
 
-                    }
-                        ?>
+                        }
+                            ?>
+            </div>
+            <button id="slideright" type="button"><i class="fa-solid fa-caret-right"></i></button>
+        </div>
+        <div class="middle">
+            <button id="sliderleftLike" type="button"><i class="fa-solid fa-caret-left"></i></button>
+            <div class="top-topics" id="top">
+                <?php
+                $x = -1;
+
+                while ($x < (count($resultsmostlike) - 1)) {
+                    $x++;
+                ?><div class="article">
+                        <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
+                        <p><?= substr($resultsmostlike[$x]["contenu"],0,50) ?>...</p>
+                        <p><?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
+                        <p><?= $resultsmostlike[$x]["like_article"] ?></p>
+                    </div><?php
+
+                        }
+                            ?>
+            </div>
+            <button id="sliderightLike" type="button"><i class="fa-solid fa-caret-right"></i></button>
         </div>
         <div class="top-topics">
 
