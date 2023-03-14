@@ -22,12 +22,12 @@ exit.addEventListener("click", () => {
 const buttonRight = document.getElementById("slideright");
 
 buttonRight.onclick = () => {
-  document.getElementById("new").scrollLeft += 300;
+  document.getElementById("new").scrollLeft += 350;
 };
 const buttonLeft = document.getElementById("sliderleft");
 
 buttonLeft.onclick = () => {
-  document.getElementById("new").scrollLeft -= 300;
+  document.getElementById("new").scrollLeft -= 350;
 };
 
 // Top tpics
@@ -35,10 +35,10 @@ buttonLeft.onclick = () => {
 const buttonRightLike = document.getElementById("sliderightLike");
 
 buttonRightLike.onclick = () => {
-  document.getElementById("top").scrollLeft += 300;
+  document.getElementById("top").scrollLeft += 350;
 };
 const buttonLeftLike = document.getElementById("sliderleftLike");
 
 buttonLeftLike.onclick = () => {
-  document.getElementById("top").scrollLeft -= 300;
+  document.getElementById("top").scrollLeft -= 350;
 };

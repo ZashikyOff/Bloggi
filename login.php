@@ -50,7 +50,6 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <i class="fa-solid fa-plus fa-xl new_article"></i>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
     </header>

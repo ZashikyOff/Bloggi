@@ -5,6 +5,10 @@ require_once "Assets/core/header.php";
 session_name("bloggi");
 session_start();
 
+if(!isset($_SESSION["role"]) && !isset($_SESSION["email"])){
+    header('Location: index.php?error=no-account');
+}
+
 $sql = "SELECT * FROM utilisateur WHERE email=:email";
 
 // Préparer la requête

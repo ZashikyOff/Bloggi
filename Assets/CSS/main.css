@@ -8,6 +8,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background-color: #f3dfc1;
 }
 header {
   display: flex;
@@ -32,7 +33,7 @@ header .new_article {
 }
 header .new_article:hover {
   scale: 140%;
-  rotate: -90deg;
+  rotate: 90deg;
 }
 header .panel_article {
   position: absolute;
@@ -53,14 +54,14 @@ header .panel_article:hover {
   z-index: 999;
   height: 100vh;
   width: 100%;
-  background-color: #1e2e98d4;
+  background-color: #368f8bcf;
   transition: 0.5s ease;
 }
 .modal_container a {
   margin: 15px auto;
   text-decoration: none;
   font-size: 2rem;
-  color: #faebd7;
+  color: #f3dfc1;
 }
 .modal_container .close_mod {
   position: absolute;
@@ -94,41 +95,42 @@ main.index {
   flex-direction: column;
   align-items: center;
 }
-main.index .middle{
+main.index .middle {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   min-width: 350px;
   min-height: 350px;
+  margin-top: 50px;
 }
-.alarm{
-    position: absolute;
-    top: 35vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: fit-content;
-    width: fit-content;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: rgba(145, 0, 0, 0.778);
-    z-index: 222;
+.alarm {
+  position: absolute;
+  top: 45vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgba(145, 0, 0, 0.778);
+  z-index: 222;
 }
 .alarm a {
-    width: fit-content;
-    height: fit-content;
-    padding: 5px;
-    margin: 5px;
-    text-decoration: none;
-    color: black;
-    border-radius: 10px;
-    background-color: #5d0000;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  border-radius: 10px;
+  background-color: #5d0000;
 }
 .search {
-    margin-top: 50px;
+  margin-top: 50px;
 }
-main.index .middle button{
+main.index .middle button {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -137,11 +139,11 @@ main.index .middle button{
   background-color: transparent;
   border: none;
   font-size: 5rem;
-  color: black;
+  color: #368f8b;
   transition: 0.5s ease-in-out;
   cursor: pointer;
 }
-main.index .middle button:hover{
+main.index .middle button:hover {
   scale: 115%;
 }
 .new-release {
@@ -149,8 +151,8 @@ main.index .middle button:hover{
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   overflow-x: hidden;
   overflow-y: hidden;
   transition: 0.5s ease;
@@ -161,19 +163,76 @@ main.index .middle button:hover{
   flex-direction: column;
   align-items: center;
   min-width: 300px;
-  width: 80%;
-  min-height: 280px;
+  width: 70%;
+  min-height: 325px;
   height: 80%;
-  padding: 5px;
-  background-color: #364b57cb;
+  padding: 10px;
+  background-color: #ffffff;
+  color: black;
+  margin-right: 25px;
+  margin-left: 25px;
+  border-radius: 15px;
+  transition: 0.5s ease;
+  text-align: center;
 }
-.top-topics{
+.new-release .article img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.new-release .article h3 {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  font-size: 125%;
+}
+.new-release .article hr {
+  height: 1px;
+  width: 80%;
+  margin-top: 5px;
+  background-color: black;
+}
+.new-release .article p {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  font-size: 125%;
+}
+.new-release .article .likearticle{
+  margin-top: 15px;
+  text-align: start;
+}
+.new-release .article .author {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  text-align: start;
+  font-size: 125%;
+}
+.new-release .article a {
+  height: fit-content;
+  width: fit-content;
+  padding: 3px 7px;
+  text-decoration: none;
+  color: black;
+  font-size: 125%;
+  border: 1px solid #368F8B;
+  text-align: end;
+  margin-left: auto;
+  transition: 0.5s ease-in;
+}
+.new-release .article a:hover {
+  background-color: #368F8B;
+  color: white;
+}
+.top-topics {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   overflow-x: hidden;
   overflow-y: hidden;
   transition: 0.5s ease;
@@ -184,11 +243,66 @@ main.index .middle button:hover{
   flex-direction: column;
   align-items: center;
   min-width: 300px;
-  width: 80%;
-  min-height: 280px;
+  width: 70%;
+  min-height: 325px;
   height: 80%;
-  padding: 5px;
-  background-color: #364b57cb;
+  padding: 10px;
+  background-color: #ffffff;
+  color: black;
+  margin-right: 25px;
+  margin-left: 25px;
+  border-radius: 15px;
+}
+.top-topics .article img {
+  height: 100px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.top-topics .article h3 {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  font-size: 125%;
+}
+.top-topics .article hr {
+  height: 1px;
+  width: 80%;
+  margin-top: 5px;
+  background-color: black;
+}
+.top-topics .article p {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  font-size: 125%;
+}
+.top-topics .article .likearticle{
+  margin-top: 15px;
+  text-align: start;
+}
+.top-topics .article .author {
+  width: 100%;
+  height: fit-content;
+  margin-top: 5px;
+  text-align: start;
+  font-size: 125%;
+}
+.top-topics .article a {
+  height: fit-content;
+  width: fit-content;
+  padding: 3px 7px;
+  text-decoration: none;
+  color: black;
+  font-size: 125%;
+  border: 1px solid #368F8B;
+  text-align: end;
+  margin-left: auto;
+  transition: 0.5s ease-in;
+}
+.top-topics .article a:hover {
+  background-color: #368F8B;
+  color: white;
 }
 /* Page Profile */
 

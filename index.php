@@ -64,7 +64,7 @@ if ($query2->execute()) {
         <?php
         if (isset($_GET["error"]) && $_GET["error"] == "no-account") {
         ?><div class="alarm">
-                <p>Vous devez vous creer un compte pour pouvoir ecrire un article</p>
+                <p>Vous devez vous creer un compte pour pouvoir ecrire un article ou voir votre profile</p>
                 <a href="index.php">OK</a>
             </div><?php
                 }
@@ -81,10 +81,17 @@ if ($query2->execute()) {
                 while ($x < (count($results) - 1)) {
                     $x++;
                 ?><div class="article">
+                    <?php 
+                    if(isset($results[$x]["image"])){
+                        ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
+                    }
+                    ?>
                         <h3><?= $results[$x]["titre"] ?></h3>
+                        <hr>
                         <p><?= substr($results[$x]["contenu"],0,50) ?>...</p>
-                        <p><?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
-                        <p><?= $results[$x]["like_article"] ?></p>
+                        <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
+                        <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
+                        <a href="">Suite</a>
                     </div><?php
 
                         }
@@ -103,8 +110,9 @@ if ($query2->execute()) {
                 ?><div class="article">
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
                         <p><?= substr($resultsmostlike[$x]["contenu"],0,50) ?>...</p>
-                        <p><?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
-                        <p><?= $resultsmostlike[$x]["like_article"] ?></p>
+                        <p class="likearticle"><?= $resultsmostlike[$x]["like_article"] ?></p>
+                        <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
+                        <a href="">Suite</a>
                     </div><?php
 
                         }
@@ -112,9 +120,7 @@ if ($query2->execute()) {
             </div>
             <button id="sliderightLike" type="button"><i class="fa-solid fa-caret-right"></i></button>
         </div>
-        <div class="top-topics">
-
-        </div>
+        <img src="" alt="">
     </main>
     <footer>
 
