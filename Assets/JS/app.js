@@ -16,6 +16,37 @@ exit.addEventListener("click", () => {
   modal.style.display = "block";
 });
 
+// Search Article
+// affichage de la recherche
+
+const addSearch = document.getElementById("search");
+
+if (addSearch) {
+  addSearch.addEventListener("keyup", () => {
+    setTimeout(() => {
+      const results = document.querySelector(".resultarticle");
+      if (results) {
+        results.style.display = "flex";
+      }
+    }, 400);
+  });
+}
+// display none de la div resultat si on clic a coter
+
+const body = document.querySelector("body");
+const results = document.querySelector(".resultarticle");
+
+if (results) {
+  if(addSearch.value.length == 0){
+    results.style.display = "none";
+  }
+  body.addEventListener("click", (e) => {
+    if (!e.target.closest(".resultarticle")) {
+      results.style.display = "none";
+    }
+  });
+}
+
 // Scroll button ----------------------------------------
 // New Release 
 

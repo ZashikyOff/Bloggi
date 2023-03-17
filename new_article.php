@@ -42,6 +42,9 @@ if(!isset($_SESSION["role"]) && !isset($_SESSION["email"])){
                             ?></p>
     </header>
     <main class="index">
+        <?php 
+        var_dump($_SESSION["email"])
+        ?>
     </main>
     <footer>
 

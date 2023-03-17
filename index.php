@@ -74,8 +74,13 @@ if ($query2->execute()) {
                 }
                     ?>
         <div class="search">
-            <input type="text">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="search" type="search" name="name" hx-post="Assets/core/searcharticle.php" h hx-trigger="keyup changed delay:400ms, search" hx-target=".resultarticle" autocomplete="off">
         </div>
+        <div class="resultarticle">
+
+        </div>
+        <h2>Nouveauté</h2>
         <div class="middle">
             <button id="sliderleft" type="button"><i class="fa-solid fa-caret-left"></i></button>
             <div class="new-release" id="new">
@@ -85,17 +90,17 @@ if ($query2->execute()) {
                 while ($x < (count($results) - 1)) {
                     $x++;
                 ?><div class="article">
-                    <?php 
-                    if(isset($results[$x]["image"])){
+                        <?php
+                        if (isset($results[$x]["image"])) {
                         ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
-                    }
-                    ?>
+                                                                        }
+                                                                            ?>
                         <h3><?= $results[$x]["titre"] ?></h3>
                         <hr>
-                        <p><?= substr($results[$x]["contenu"],0,50) ?>...</p>
+                        <p><?= substr($results[$x]["contenu"], 0, 50) ?>...</p>
                         <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
-                        <a href="">Suite</a>
+                        <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
                     </div><?php
 
                         }
@@ -103,6 +108,7 @@ if ($query2->execute()) {
             </div>
             <button id="slideright" type="button"><i class="fa-solid fa-caret-right"></i></button>
         </div>
+        <h2>Top</h2>
         <div class="middle">
             <button id="sliderleftLike" type="button"><i class="fa-solid fa-caret-left"></i></button>
             <div class="top-topics" id="top">
@@ -113,7 +119,7 @@ if ($query2->execute()) {
                     $x++;
                 ?><div class="article">
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
-                        <p><?= substr($resultsmostlike[$x]["contenu"],0,50) ?>...</p>
+                        <p><?= substr($resultsmostlike[$x]["contenu"], 0, 50) ?>...</p>
                         <p class="likearticle"><?= $resultsmostlike[$x]["like_article"] ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
                         <a href="">Suite</a>
