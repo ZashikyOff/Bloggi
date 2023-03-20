@@ -118,11 +118,16 @@ if ($query2->execute()) {
                 while ($x < (count($resultsmostlike) - 1)) {
                     $x++;
                 ?><div class="article">
+                                            <?php
+                        if (isset($resultsmostlike[$x]["image"])) {
+                        ?><img src="<?= $resultsmostlike[$x]["image"] ?>" alt=""><?php
+                                                                        }
+                                                                            ?>
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
                         <p><?= substr($resultsmostlike[$x]["contenu"], 0, 50) ?>...</p>
                         <p class="likearticle"><?= $resultsmostlike[$x]["like_article"] ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
-                        <a href="">Suite</a>
+                        <a href="../../article.php?id=<?= $resultsmostlike[$x]["id"] ?>">Suite</a>
                     </div><?php
 
                         }

@@ -494,8 +494,64 @@ main.article {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+main.article div.article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 90%;
   margin-top: 50px;
+}
+main.article .commentaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #368f8b9a;
+  width: 90%;
+  height: fit-content;
+}
+main.article .commentaire form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #368f8b9a;
+  width: 50%;
+  height: fit-content;
+}
+main.article .commentaire form textarea{
+  resize: none;
+  outline: none;
+  padding: 5px;
+  max-height: 350px;
+  width: 100%;
+  max-width: 400px;
+}
+main.article .commentaire form button {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+}
+
+main.article .commentaire .commentairebyarticle {
+  height: fit-content;
+  width: 60%;
+  background-color: #eed0a4;
+  padding: 10px;
+  border-radius: 10px;
+}
+main.article .commentaire .commentairebyarticle p {
+  margin: 0;
+  text-align: start;
+}
+
+main.article .commentaire .commentairebyarticle p.author {
+  margin: 0;
+  text-align: end;
+}
+
+main.article .commentaire .commentairebyarticle a {
+  margin-left: 90%;
 }
 
 main.article * {
