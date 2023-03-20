@@ -11,13 +11,17 @@ class Article
 {
     /* attributs (propriete properties) */
     private int $id;
-    private string $nom;
+    private string $titre;
+    private int $id_author;
+    private string $contenu;
 
     /** Constructeur */
-    public function __construct($id = 0, $nom = "")
+    public function __construct($id = 0, $titre = "",$id_author = 0,$contenu = "")
     {
         $this->id = $id;
-        $this->nom = $nom;
+        $this->titre = $titre;
+        $this->id_author = $id_author;
+        $this->contenu = $contenu;
     }
 
     /** Accesseurs */
@@ -64,7 +68,7 @@ class Article
             // $pdo-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $query = $pdo-> prepare($sql);
-            $query-> bindParam("email", $email, PDO::PARAM_INT);
+            $query-> bindParam("email", $email);
 
             if ($query-> execute()) {
                 // $query-> setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, __CLASS__);

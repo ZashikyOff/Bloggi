@@ -10,31 +10,31 @@ use Core\Entity\Article;
 session_name("bloggi");
 session_start();
 
-if(isset($_GET["new"]) && $_GET["new"] == "yes"){
-    if (Article::FindRoleAccount($_SESSION["email"]) == "admin" || Article::FindRoleAccount($_SESSION["email"]) == "editeur") {
-        if ($_SESSION["role"] == "admin" || $_SESSION["role"] == "editeur") {
-            header('Location: panelediteur.php');
-        } else {
-            header('Location: new_article.php');
-        }
-    } else {
-        header('Location: new_article.php');
-    }
-}else {
-    header('Location: new_article.php');
+$sql = "SELECT * FROM article ORDER BY id";
+
+// Préparer la requête
+$query = $lienDB->prepare($sql);
+
+// Exécution de la requête
+if ($query->execute()) {
+    // traitement des résultats
+    $results = $query->fetchAll();
 }
 
 ?>
 <body>
-    <div class="modal_container">
+<div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
-        <a href="login.php">Login</a>
-        <a href="">Contact</a>
+        <a href="new_article.php">New Article</a>
         <?php
-        if (isset($_SESSION["email"])) {
-            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
+        if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+        }
+        if (!isset($_SESSION["email"])) {
+            echo "<a href='login.php'>Login</a>";
         } else {
+            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
         }
         ?>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
@@ -52,7 +52,47 @@ if(isset($_GET["new"]) && $_GET["new"] == "yes"){
                             }
                             ?></p>
     </header>
-    <main class="index">
+    <main class="editeur">
+        <div class="left">
+        <?php
+                $x = -1;
+
+                while ($x < (count($results) - 1)) {
+                    $x++;
+                ?><div class="article">
+                        <?php
+                        if (isset($results[$x]["image"])) {
+                        ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
+                                                                        }
+                                                                            ?>
+                        <h3><?= $results[$x]["titre"] ?></h3>
+                        <hr>
+                        <p class="contenupanel"><?= $results[$x]["contenu"] ?>...</p>
+                        <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
+                        <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
+                        <button type="button" id="morecontent" value="plus">Voir plus</button>
+                    </div><?php
+
+                        }
+                            ?>
+        </div>
+        <div class="right">
+        <?php
+                $x = -1;
+
+                while ($x < (count($results) - 1)) {
+                    $x++;
+                ?><form class="modifyarticle">
+                    <input type="text" placeholder="Titre ...">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Contenu .."></textarea>
+                    <a href=""><button>Supprimer</button></a>
+                    <a href=""><button>Modifier</button></a>
+                    </form><?php
+
+                        }
+                            ?>
+
+        </div>
     </main>
     <footer>
 

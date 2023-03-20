@@ -36,17 +36,17 @@ if ($query2->execute()) {
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
+        <a href="new_article.php">New Article</a>
         <?php
+        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+        }
         if (!isset($_SESSION["email"])) {
             echo "<a href='login.php'>Login</a>";
         } else {
-        }
-        if (isset($_SESSION["email"])) {
             echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
-        } else {
         }
         ?>
-        <a href="">Contact</a>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>

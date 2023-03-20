@@ -5,7 +5,7 @@ require_once "Assets/core/header.php";
 session_name("bloggi");
 session_start();
 
-if(!isset($_SESSION["role"]) && !isset($_SESSION["email"])){
+if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
     header('Location: index.php?error=no-account');
 }
 
@@ -27,13 +27,15 @@ if ($query->execute()) {
 <body>
     <div class="modal_container">
         <a href="index.php">Home</a>
-        <a href="profile.php">Profile</a>
-        <a href="login.php">Login</a>
-        <a href="">Contact</a>
+        <a href="new_article.php">New Article</a>
         <?php
-        if (isset($_SESSION["email"])) {
-            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
+        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+        }
+        if (!isset($_SESSION["email"])) {
+            echo "<a href='login.php'>Login</a>";
         } else {
+            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
         }
         ?>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
@@ -51,12 +53,21 @@ if ($query->execute()) {
                             }
                             ?></p>
     </header>
-    <main>
-        <img src="<?= $results["img_profile"]?>" alt="">
+    <main class="profile">
+        <div class="imgprofile">
+            <?php
+            if ($results["img_profile"] != null) {
+            ?><img src="<?php $results["img_profile"] ?>" alt=""><?php
+                                                                } else {
+                                                                    ?><input type="file" name="photoprofile" id=""><?php
+                                                                                                                }
+                                                                                                                    ?>
+        </div>
         <div class="infos">
-            <p>Pseudo : <?= $results["pseudo"]?></p>
-            <p>Email : <?= $results["email"]?></p>
-            <p>Date d'inscription : <?= $results["date_creation"]?></p>
+            <p>Pseudo : <?= $results["pseudo"] ?></p>
+            <p>Email : <?= $results["email"] ?></p>
+            <p>Votre Rôle : <?= ucfirst($results["role"]) ?></p>
+            <p>Date d'inscription : <?= $results["date_creation"] ?></p>
             <p>Changer son mot de passe ?</p>
             <a href="">Cliquer Ici...</a>
             <a href="Assets/core/logout.php">Se deconnecter</a>
