@@ -167,17 +167,17 @@ main.index h2 {
   margin-top: 50px;
   background-color: white;
   height: fit-content;
-  width: 35vw;
-  min-width: fit-content;
+  width: 50vw;
+  max-width: 450px;
+  padding: 5px;
+}
+.search i {
+  width: 10%;
 }
 .search input {
   outline: none;
   border: none;
-  min-width: 90%;
-}
-.search input,
-.search i {
-  margin: 5px;
+  width: 90%;
 }
 main.index .middle button {
   display: flex;
@@ -522,6 +522,7 @@ main.article .commentaire form{
 main.article .commentaire form textarea{
   resize: none;
   outline: none;
+  border: none;
   padding: 5px;
   max-height: 350px;
   width: 100%;
@@ -551,7 +552,11 @@ main.article .commentaire .commentairebyarticle p.author {
 }
 
 main.article .commentaire .commentairebyarticle a {
-  margin-left: 90%;
+  margin-left: 95%;
+}
+main.article .commentaire .commentairebyarticle a i {
+  margin: 0;
+  margin-top: 5px;
 }
 
 main.article * {
@@ -660,3 +665,49 @@ table.GeneratedTable tr{
 table.GeneratedTable tbody tr:hover {
   background-color: #8ad1ce6c;
 } 
+
+/* Media Query -------- */
+
+@media only screen and (max-width: 500px) {
+  .search {
+    width: fit-content;
+  }
+  .search input {
+    width: 250px;
+    padding-left: 5px;
+  }
+  main.index .middle {
+    flex-direction: column;
+    min-width: 250px;
+    min-height: 250px;
+  }
+  #sliderleft, #sliderleftLike {
+    display: none;
+  }
+
+  #slideright, #sliderightLike {
+    display: none;
+  }
+  .new-release {
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 300px;
+    height: fit-content;
+  }
+  main.index .middle .article {
+    min-width: 275px;
+    width: 275px;
+    min-height: 290px;
+    height: 290px;
+    margin: 0;
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+  .top-topics {
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 300px;
+    height: fit-content;
+  }
+
+}

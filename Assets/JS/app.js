@@ -8,12 +8,15 @@ if (modal) {
   modal.addEventListener("click", () => {
     modal_container.classList.toggle("active");
     modal.style.display = "none";
+    body.style.overflow = "hidden"
   });
 }
 
 exit.addEventListener("click", () => {
   modal_container.classList.toggle("active");
   modal.style.display = "block";
+  body.style.overflow = "visible"
+
 });
 
 // Search Article

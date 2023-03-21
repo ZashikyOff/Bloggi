@@ -98,7 +98,7 @@ if ($query2->execute()) {
                         <h3><?= $results[$x]["titre"] ?></h3>
                         <hr>
                         <p><?= substr($results[$x]["contenu"], 0, 50) ?>...</p>
-                        <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
+                        <p class="likearticle">J'aime : <?= Article::AllComment($results[$x]["id"]) ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
                         <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
                     </div><?php
@@ -125,7 +125,7 @@ if ($query2->execute()) {
                                                                             ?>
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
                         <p><?= substr($resultsmostlike[$x]["contenu"], 0, 50) ?>...</p>
-                        <p class="likearticle"><?= $resultsmostlike[$x]["like_article"] ?></p>
+                        <p class="likearticle">J'aime : <?= Article::AllComment($resultsmostlike[$x]["id"]) ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>
                         <a href="../../article.php?id=<?= $resultsmostlike[$x]["id"] ?>">Suite</a>
                     </div><?php

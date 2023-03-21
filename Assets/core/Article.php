@@ -81,4 +81,32 @@ class Article
             echo $e-> getMessage();
         }
     }
+    public static function AllComment(int $id): int {
+        $sql = "SELECT * FROM commentaire WHERE id_article = :id;";
+        $dsn = "mysql:host=localhost;port=3306;dbname=bloggi;charset=utf8";
+
+        try {
+            $pdo = new PDO($dsn, "root", "");
+            // $pdo-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $query = $pdo-> prepare($sql);
+            $query-> bindParam("id", $id, PDO::PARAM_INT);
+
+            if ($query-> execute()) {
+                // $query-> setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, __CLASS__);
+
+                $result = $query-> fetchAll();
+                $x = 0;
+                $value = 0;
+                while ($x <= (count($result)) - 1) {
+                    $value = $value + 1;
+                    $x++;
+                }
+                return $value;
+            }
+
+        } catch(PDOException|Exception|Error $e) {
+            echo $e-> getMessage();
+        }
+    }
 }

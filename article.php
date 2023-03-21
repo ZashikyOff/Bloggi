@@ -106,7 +106,7 @@ if (isset($_POST["newcommentaire"])) {
                 <h3><?= $results[$x]["titre"] ?></h3>
                 <hr>
                 <p><?= $results[$x]["contenu"] ?></p>
-                <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
+                <p class="likearticle">J'aime : <?= Article::AllComment($id) ?></p>
                 <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
             <?php
 
@@ -123,7 +123,7 @@ if (isset($_POST["newcommentaire"])) {
             $x = 0;
             while ($x <= (count($resultscommentaire)) - 1) { ?>
             <div class="commentairebyarticle">
-            <p><?= $resultscommentaire[$x]["message"] ?></p>
+            <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
                 <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
                 <?php 
                 if(Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin"){
