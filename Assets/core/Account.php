@@ -63,4 +63,28 @@ class Account
             echo $e-> getMessage();
         }
     }
+    public static function FindPP(string $email) {
+        $sql = "SELECT img_profile FROM utilisateur WHERE email = :email;";
+        $dsn = "mysql:host=localhost;port=3306;dbname=bloggi;charset=utf8";
+
+        try {
+            $pdo = new PDO($dsn, "root", "");
+            // $pdo-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $query = $pdo-> prepare($sql);
+
+            // Liaison des paramètres de la requête préparée
+            $query->bindParam(":email", $email, PDO::PARAM_STR);
+            
+            // Exécution de la requête
+            if ($query->execute()) {
+                // traitement des résultats
+                $results = $query->fetch();
+                return $results[0];
+            }
+
+        } catch(PDOException|Exception|Error $e) {
+            echo $e-> getMessage();
+        }
+    }
 }
