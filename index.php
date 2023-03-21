@@ -33,12 +33,26 @@ if ($query2->execute()) {
 ?>
 
 <body>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
         <a href="new_article.php">New Article</a>
         <?php
-        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+        if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
             echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
         }
         if (!isset($_SESSION["email"])) {
@@ -56,10 +70,10 @@ if ($query2->execute()) {
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
                                 echo "Connecter";
                             } else {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#565656'></i>";
                                 echo "Non Connecter";
                             }
                             ?></p>
@@ -118,12 +132,13 @@ if ($query2->execute()) {
                 while ($x < (count($resultsmostlike) - 1)) {
                     $x++;
                 ?><div class="article">
-                                            <?php
+                        <?php
                         if (isset($resultsmostlike[$x]["image"])) {
                         ?><img src="<?= $resultsmostlike[$x]["image"] ?>" alt=""><?php
-                                                                        }
-                                                                            ?>
+                                                                                }
+                                                                                    ?>
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
+                        <hr>
                         <p><?= substr($resultsmostlike[$x]["contenu"], 0, 50) ?>...</p>
                         <p class="likearticle">J'aime : <?= Article::AllComment($resultsmostlike[$x]["id"]) ?></p>
                         <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p>

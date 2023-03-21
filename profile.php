@@ -4,8 +4,12 @@ $title = "Profile";
 require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 require_once "Assets/core/Account.php";
+require "Assets/core/Article.php";
 
 use Core\Entity\Account;
+
+
+use Core\Entity\Article;
 
 session_name("bloggi");
 session_start();
@@ -94,11 +98,25 @@ if ($query->execute()) {
 ?>
 
 <body>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="new_article.php">New Article</a>
         <?php
-        if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+        if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
             echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
         }
         if (!isset($_SESSION["email"])) {
@@ -114,10 +132,10 @@ if ($query->execute()) {
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
                                 echo "Connecter";
                             } else {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#565656'></i>";
                                 echo "Non Connecter";
                             }
                             ?></p>
@@ -127,12 +145,11 @@ if ($query->execute()) {
             <?php
             if (Account::FindPP($_SESSION["email"]) != null) {
             ?><img src="<?= Account::FindPP($_SESSION["email"]) ?>" alt=""><?php
-                                                                        } else {
-                                                                            ?><form action="" method="post" enctype="multipart/form-data"><input type="file" name="avatar" id="">
-                    <button type="submit">Valider</button>
+        } else {
+            ?><form action="" method="post" enctype="multipart/form-data"><input type="file" name="avatar" id="">
+                <button type="submit">Valider</button>
                 </form><?php
-                                                                        }
-                        ?>
+                }?>
         </div>
         <div class="infos">
             <p>Pseudo : <?= $results["pseudo"] ?></p>

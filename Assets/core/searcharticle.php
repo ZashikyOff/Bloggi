@@ -17,21 +17,18 @@ $result->bindValue(':search', "%$search%");
 $result->bindValue(':filter', "$filter");
 $result->execute();
 
-?>
-<?php
+$result2 = $result;
 while ($row = $result->fetch()) : ?>
 
-    <div class="article">
+    <div class="resultatrecherche">
         <?php
         if (isset($row["image"])) {
         ?><img src="<?= $row["image"] ?>" alt=""><?php
-        }?>
+                                                } ?>
         <h3><?= htmlspecialchars($row['titre']); ?></h3>
         <hr>
-        <p><?= substr($row["contenu"], 0, 50) ?></p>
-        <p class="likearticle"><?= $row["like_article"] ?></p>
-        <p class="author"><?= Article::FindAuthor($row["id_auteur"]); ?></p>
+        <p class="author">Auteur : <?= Article::FindAuthor($row["id_auteur"]); ?></p>
         <a href="../../article.php?id=<?= htmlspecialchars($row['id']); ?>">Suite</a>
     </div>
 
-<?php endwhile; ?>
+<?php endwhile;

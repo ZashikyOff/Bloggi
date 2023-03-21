@@ -30,10 +30,10 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
           $_SESSION["email"] = $_POST["email"];
           $_SESSION["role"] = $results["role"];
           header('Location: index.php');
-        }else {
+        } else {
           echo 'Mot de passe incorrect';
         }
-      } else{
+      } else {
         echo "Votre compte est desactiver";
       }
     } else {
@@ -44,6 +44,20 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
 ?>
 
 <body>
+  <div class="area">
+    <ul class="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
   <div class="modal_container">
     <a href="index.php">Home</a>
     <a href="profile.php">Profile</a>
@@ -54,15 +68,6 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
   <header>
     <h1>Bloggi</h1>
     <i class="fa-solid fa-bars fa-xl mod"></i>
-    <p class="etat_co"><?php
-                        if (isset($_SESSION["email"])) {
-                          echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
-                          echo "Connecter";
-                        } else {
-                          echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
-                          echo "Non Connecter";
-                        }
-                        ?></p>
   </header>
   <main>
     <form action="" method="post">

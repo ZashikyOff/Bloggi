@@ -44,10 +44,10 @@ if ($query->execute()) {
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
                                 echo "Connecter";
                             } else {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#565656'></i>";
                                 echo "Non Connecter";
                             }
                             ?></p>

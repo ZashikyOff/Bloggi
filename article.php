@@ -64,6 +64,20 @@ if (isset($_POST["newcommentaire"])) {
 ?>
 
 <body>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
@@ -81,15 +95,15 @@ if (isset($_POST["newcommentaire"])) {
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <i class="fa-solid fa-plus fa-xl new_article"></i>
+        <a href="new_article.php"><i class="fa-solid fa-plus fa-xl new_article"></i></a>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
                                 echo "Connecter";
                             } else {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#565656'></i>";
                                 echo "Non Connecter";
                             }
                             ?></p>
@@ -122,15 +136,17 @@ if (isset($_POST["newcommentaire"])) {
             <?php
             $x = 0;
             while ($x <= (count($resultscommentaire)) - 1) { ?>
-            <div class="commentairebyarticle">
-            <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
-                <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
-                <?php 
-                if(Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin"){
-                    ?><a href=""><i class="fa-solid fa-trash-can"></i></a><?php
-                }
-                ?>
-            </div>
+                <div class="commentairebyarticle">
+                    <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
+                    <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
+                    <?php
+                    if(isset($_SESSION["email"])){
+                        if (Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin") {
+                            ?><a href=""><i class="fa-solid fa-trash-can"></i></a><?php
+                                                                                }
+                    }
+                                                                            ?>
+                </div>
             <?php
 
                 $x++;

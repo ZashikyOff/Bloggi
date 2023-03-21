@@ -8,7 +8,9 @@ session_name("bloggi");
 session_start();
 
 require "Assets/core/Account.php";
+require "Assets/core/Article.php";
 
+use Core\Entity\Article;
 use Core\Entity\Account;
 
 if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
@@ -18,15 +20,31 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
 ?>
 
 <body>
+<div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
-        <a href="login.php">Login</a>
-        <a href="">Contact</a>
         <?php
-        if (isset($_SESSION["email"])) {
-            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
+        if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+        }
+        if (!isset($_SESSION["email"])) {
+            echo "<a href='login.php'>Login</a>";
         } else {
+            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
         }
         ?>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
@@ -37,10 +55,10 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:green'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
                                 echo "Connecter";
                             } else {
-                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:red'></i>";
+                                echo "<i class='fa-solid fa-circle fa-2xs' style='color:#565656'></i>";
                                 echo "Non Connecter";
                             }
                             ?></p>
@@ -115,19 +133,19 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
     //     }
     // }  
     ?>
-    <main>
+    <main class="new_article">
         <h2>New Article</h2>
-        <form action="" method="post" class="add_article">
+        <form action="" method="post" class="add_article" enctype="multipart/form-data">
 
             <label>Titre de l'article </label>
-            <input type="text" name="titre">
+            <input type="text" name="titre" required>
 
             <label>Contenu</label>
-            <textarea name="contenu" cols="30" rows="10"></textarea>
+            <textarea name="contenu" cols="30" rows="10" required></textarea>
 
-            <input type="file" name="image_article" accept="image/jpeg, image/png">
+            <input type="file" name="image_article" accept="image/jpeg, image/png" required>
 
-            <button>Publier</button>
+            <button type="submit">Publier</button>
 
         </form>
         <?php if (isset($message)) {
