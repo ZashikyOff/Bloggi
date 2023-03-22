@@ -60,6 +60,20 @@ if (isset($_POST["newcommentaire"])) {
         header("Location: article.php?id=$id");
     }
 }
+if (isset($_GET["deletecom"])) {
+    $sqlcommentaire = "DELETE FROM commentaire WHERE id LIKE :id";
+
+    // Préparer la requête
+    $query2 = $lienDB->prepare($sqlcommentaire);
+    $query2->bindValue(':id', $_GET['deletecom']);
+
+    // Exécution de la requête
+    if ($query2->execute()) {
+        // traitement des résultats
+        $resultscommentaire = $query2->fetchAll();
+        header("Location: article.php?id=$id");
+    }
+}
 
 ?>
 
@@ -118,7 +132,6 @@ if (isset($_POST["newcommentaire"])) {
                                                             }
                                                                 ?>
                 <h3><?= $results[$x]["titre"] ?></h3>
-                <hr>
                 <p><?= $results[$x]["contenu"] ?></p>
                 <p class="likearticle">J'aime : <?= Article::AllComment($id) ?></p>
                 <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
@@ -130,7 +143,7 @@ if (isset($_POST["newcommentaire"])) {
         </div>
         <div class="commentaire">
             <form action="" method="post">
-                <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..."></textarea>
+                <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..." required></textarea>
                 <button type="submit">Envoyer</button>
             </form>
             <?php
@@ -140,12 +153,12 @@ if (isset($_POST["newcommentaire"])) {
                     <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
                     <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
                     <?php
-                    if(isset($_SESSION["email"])){
+                    if (isset($_SESSION["email"])) {
                         if (Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin") {
-                            ?><a href=""><i class="fa-solid fa-trash-can"></i></a><?php
-                                                                                }
-                    }
-                                                                            ?>
+                    ?><a href="article.php?id=<?= $id ?>&deletecom=<?= $resultscommentaire[$x]['id'] ?>"><i class="fa-solid fa-trash-can"></i></a><?php
+                                                                                                                                                    }
+                                                                                                                                                }
+                                                                                                                                                        ?>
                 </div>
             <?php
 

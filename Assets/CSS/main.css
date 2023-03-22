@@ -23,6 +23,9 @@
   background-color: #f3dfc1;
   border-radius: 7px;
 }
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -97,6 +100,7 @@ header .panel_article:hover {
   height: 100vh;
   width: 100%;
   background-color: #4e54c8b7;
+  font-family: Rancho,cursive;
   transition: 0.5s ease;
 }
 .modal_container a {
@@ -104,6 +108,18 @@ header .panel_article:hover {
   text-decoration: none;
   font-size: 2rem;
   color: #f3dfc1;
+  transition: 0.5s ease-in-out;
+  padding: 10px;
+}
+.modal_container a:hover {
+  background-color: #4e54c8;
+  padding: 10px;
+  border-radius: 10px;
+  animation: rotateAnimation 2s ease infinite;
+}
+@keyframes rotateAnimation {
+	from {transform: rotateX(0deg);}
+	to {transform: rotateX(360deg);}
 }
 .modal_container .close_mod {
   position: absolute;
@@ -182,7 +198,8 @@ main.index h2 {
   height: fit-content;
   width: 50vw;
   max-width: 450px;
-  padding: 5px;
+  padding: 8px;
+  border-radius: 10px;
 }
 .search i {
   width: 10%;
@@ -232,6 +249,7 @@ main.index h2 {
   height: fit-content;
   width: fit-content;
   margin-bottom: 10px;
+  margin-top: 10px;
   padding: 3px 7px;
   text-decoration: none;
   color: black;
@@ -512,7 +530,7 @@ main.profile {
   height: 70vh;
   padding: 10px;
   border-radius: 15px;
-  background-color: #eed0a4;
+  background-color: #eed0a4d6;
 }
 
 main.profile .imgprofile {
@@ -550,10 +568,36 @@ main.profile * {
   margin: 5px;
 }
 
-.infos {
+main.profile .infos {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+main.profile .infos a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  text-decoration: none;
+  color: #000000;
+}
+main.profile .infos a span{
+  margin: 0;
+  display: block;
+  width: 0;
+  height: 2px;
+  padding: 0 auto;
+  transition: 0.5s ease;
+}
+main.profile .infos a:hover span{
+  margin: 0;
+  display: block;
+  background-color: #000000;
+  background: linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+  height: 2px;
 }
 
 /* Page Article Dev */
@@ -575,7 +619,6 @@ main.article .commentaire {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #368f8b9a;
   width: 90%;
   height: fit-content;
 }
@@ -583,7 +626,7 @@ main.article .commentaire form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #368f8b9a;
+  background-color: transparent;
   width: 50%;
   height: fit-content;
 }
@@ -591,7 +634,8 @@ main.article .commentaire form textarea {
   resize: none;
   outline: none;
   border: none;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px;
   max-height: 350px;
   width: 100%;
   max-width: 400px;
@@ -600,6 +644,8 @@ main.article .commentaire form button {
   padding: 5px;
   border-radius: 10px;
   border: none;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 main.article .commentaire .commentairebyarticle {
@@ -625,6 +671,7 @@ main.article .commentaire .commentairebyarticle a {
 main.article .commentaire .commentairebyarticle a i {
   margin: 0;
   margin-top: 5px;
+  color: #000000;
 }
 
 main.article * {
