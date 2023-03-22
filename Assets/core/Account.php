@@ -63,7 +63,7 @@ class Account
             echo $e-> getMessage();
         }
     }
-    public static function FindPP(string $email) {
+    public static function FindPP(string $email): string{
         $sql = "SELECT img_profile FROM utilisateur WHERE email = :email;";
         $dsn = "mysql:host=localhost;port=3306;dbname=bloggi;charset=utf8";
 
