@@ -17,7 +17,7 @@ $sql = "SELECT * FROM article WHERE id_auteur = :id ORDER BY id";
 // Préparer la requête
 $id = Account::FindIdByMail($_SESSION["email"]);
 $query = $lienDB->prepare($sql);
-$query->bindParam(':id',$id);
+$query->bindParam(':id', $id);
 
 // Exécution de la requête
 if ($query->execute()) {
@@ -26,8 +26,9 @@ if ($query->execute()) {
 }
 
 ?>
+
 <body>
-<div class="modal_container">
+    <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
         <a href="new_article.php">New Article</a>
@@ -57,46 +58,36 @@ if ($query->execute()) {
                             ?></p>
     </header>
     <main class="editeur">
-        <div class="left">
         <?php
-                $x = -1;
+        $x = -1;
 
-                while ($x < (count($results) - 1)) {
-                    $x++;
-                ?><div class="article">
-                        <?php
-                        if (isset($results[$x]["image"])) {
-                        ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
+        while ($x < (count($results) - 1)) {
+            $x++;
+        ?><div class="article">
+                <?php
+                if (isset($results[$x]["image"])) {
+                ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
                                                                         }
                                                                             ?>
-                        <h3><?= $results[$x]["titre"] ?></h3>
-                        <hr>
-                        <p class="contenupanel"><?= $results[$x]["contenu"] ?>...</p>
-                        <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
-                        <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
-                        <button type="button" id="morecontent" value="plus">Voir plus</button>
-                    </div><?php
-
-                        }
-                            ?>
-        </div>
-        <div class="right">
-        <?php
-                $x = -1;
-
-                while ($x < (count($results) - 1)) {
-                    $x++;
-                ?><form class="modifyarticle">
-                    <input type="text" placeholder="Titre ...">
+                <h3><?= $results[$x]["titre"] ?></h3>
+                <hr>
+                <p class="contenupanel"><?= $results[$x]["contenu"] ?>...</p>
+                <p class="likearticle">Likes : <?= $results[$x]["like_article"] ?></p>
+                <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
+                <button type="button" id="morecontent" value="plus">Voir plus</button>
+            </div>
+            <div class="modifier">
+                <form class="modifyarticle" >
+                    <input type="text" placeholder="<?= $results[$x]["titre"] ?>">
                     <textarea name="" id="" cols="30" rows="10" placeholder="Contenu .."></textarea>
                     <a href=""><button>Supprimer</button></a>
                     <a href=""><button>Modifier</button></a>
-                    </form><?php
+                </form>
+            </div>
+        <?php
 
-                        }
-                            ?>
-
-        </div>
+        }
+        ?>
     </main>
     <footer>
 

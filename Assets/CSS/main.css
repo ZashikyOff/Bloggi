@@ -656,42 +656,40 @@ main.article .author {
 main.editeur {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  width: 75%;
 }
-main.editeur .left {
+
+main.editeur .modifier {
   display: flex;
   flex-direction: column;
-  align-items: end;
-  width: 50%;
-  height: 100%;
-}
-main.editeur .right {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 50%;
-  height: 100%;
-}
-main.editeur .right .modifyarticle {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-  width: 60%;
-  min-height: 325px;
-  height: 75%;
-  padding: 15px;
+  width: 45%;
   background-color: #ffffff;
   color: black;
   border-radius: 15px;
   margin: 10px;
+  padding: 10px;
 }
-main.editeur .left .article {
+form.modifyarticle input {
+  outline: none;
+  padding-left: 5px;
+}
+form.modifyarticle textarea {
+  width: 100%;
+  height: 80%;
+  margin-top: 10px;
+  resize: none;
+  outline: none;
+  padding: 5px;
+}
+form.modifyarticle button{
+  margin-top: 7px;
+}
+main.editeur .article {
   display: flex;
   flex-direction: column;
-  min-width: 300px;
-  width: 60%;
-  min-height: 325px;
-  height: 75%;
+  width: 45%;
   padding: 5px;
   background-color: #ffffff;
   color: black;
@@ -701,7 +699,7 @@ main.editeur .left .article {
   text-align: center;
 }
 
-main.editeur .left .article .contenupanel {
+main.editeur .article .contenupanel {
   height: 50px;
   overflow: hidden;
   margin: 3px;
