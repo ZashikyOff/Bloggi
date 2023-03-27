@@ -60,17 +60,23 @@ if (isset($_POST["newcommentaire"])) {
         header("Location: article.php?id=$id");
     }
 }
-if (isset($_GET["deletecom"])) {
-    $sqlcommentaire = "DELETE FROM commentaire WHERE id LIKE :id";
+
+if(isset($_GET["deletecomm"])){
+
+    $sqldelete = "DELETE FROM commentaire WHERE id=:id";
 
     // Préparer la requête
-    $query2 = $lienDB->prepare($sqlcommentaire);
-    $query2->bindValue(':id', $_GET['deletecom']);
+    $query2 = $lienDB->prepare($sqldelete);
+
+    $id = $_GET["id"];
+    $id_commentaire = $_GET["deletecomm"];
+
+    $query2->bindParam(":id", $id_commentaire, PDO::PARAM_INT);
 
     // Exécution de la requête
     if ($query2->execute()) {
         // traitement des résultats
-        $resultscommentaire = $query2->fetchAll();
+        // $resultsdelete = $query2->fetchAll();
         header("Location: article.php?id=$id");
     }
 }
@@ -143,7 +149,7 @@ if (isset($_GET["deletecom"])) {
         </div>
         <div class="commentaire">
             <form action="" method="post">
-                <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..." required></textarea>
+                <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..."></textarea>
                 <button type="submit">Envoyer</button>
             </form>
             <?php
@@ -153,12 +159,12 @@ if (isset($_GET["deletecom"])) {
                     <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
                     <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
                     <?php
-                    if (isset($_SESSION["email"])) {
+                    if(isset($_SESSION["email"])){
                         if (Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin") {
-                    ?><a href="article.php?id=<?= $id ?>&deletecom=<?= $resultscommentaire[$x]['id'] ?>"><i class="fa-solid fa-trash-can"></i></a><?php
-                                                                                                                                                    }
-                                                                                                                                                }
-                                                                                                                                                        ?>
+                            ?><a href="article.php?id=<?= $_GET["id"] ?>&deletecomm=<?= $resultscommentaire[$x]["id"] ?>"><i class="fa-solid fa-trash-can"></i></a><?php
+                                                                                }
+                    }
+                                                                            ?>
                 </div>
             <?php
 

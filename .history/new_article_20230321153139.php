@@ -20,7 +20,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
 ?>
 
 <body>
-    <div class="area">
+<div class="area">
         <ul class="circles">
             <li></li>
             <li></li>
@@ -50,7 +50,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <a href="panelediteur.php"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
+        <a href="panelediteur.php?new=yes"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
@@ -65,9 +65,6 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
     </header>
     <?php
     //On traite le formulaire
-    if (!file_exists("Assets/IMG/IMG_article")) {
-        mkdir("IMG_article");
-    }
     if (!empty($_POST)) {
         //POST n'est pas vide, on vérifie que toutes les données sont présentes
         if (isset($_POST["titre"], $_POST["contenu"]) && !empty($_POST["titre"]) && !empty($_POST["contenu"])) {
@@ -89,6 +86,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
                 //On prépare la requete
                 $query = $lienDB->prepare($sql);
 
+                echo $sql;
 
                 //On injecte les valeurs
                 date_default_timezone_set('Europe/Paris');
@@ -101,29 +99,8 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
 
                 //On exécute la requete
                 if ($query->execute()) {
-                    $last_id = $lienDB->lastInsertId();
-
-                    $target_dir = "Assets/IMG/IMG_article/";
-
-                    $target_file = $target_dir . basename($last_id) . ".png";
-
-                    move_uploaded_file($_FILES["image_article"]["tmp_name"], $target_file);
-
-                    $sql = "UPDATE article SET image=:chemin WHERE id=:last_id";
-
-                    // Préparer la requête
-                    $query = $lienDB->prepare($sql);
-
-                    $query->bindParam(":chemin", $target_file, PDO::PARAM_STR);
-                    $query->bindParam(":last_id", $last_id, PDO::PARAM_INT);
-
-                    if ($query->execute()) {
-                        // traitement des résultats
-                        $results = $query->fetch();
-                    }
-
                     echo "Aucune erreur";
-                    // header('Location: new_article.php');
+                    header('Location: new_article.php');
                 } else {
                     echo " Erreur !!!!!";
                 }

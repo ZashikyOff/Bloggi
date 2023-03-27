@@ -96,9 +96,9 @@ class Article
                 // $query-> setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, __CLASS__);
 
                 $result = $query-> fetchAll();
-                $x = 0;
+                $x = -1;
                 $value = 0;
-                while ($x <= (count($result)) - 1) {
+                while ($x < (count($result) -1)) {
                     $value = $value + 1;
                     $x++;
                 }

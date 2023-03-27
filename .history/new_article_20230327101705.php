@@ -50,7 +50,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <a href="panelediteur.php"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
+        <a href="panelediteur.php?new=yes"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
@@ -65,6 +65,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
     </header>
     <?php
     //On traite le formulaire
+    var_dump($_FILES);
     if (!file_exists("Assets/IMG/IMG_article")) {
         mkdir("IMG_article");
     }
@@ -102,6 +103,8 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
                 //On exécute la requete
                 if ($query->execute()) {
                     $last_id = $lienDB->lastInsertId();
+                    var_dump($last_id);
+                    var_dump($_FILES);
 
                     $target_dir = "Assets/IMG/IMG_article/";
 

@@ -27,7 +27,7 @@ if (!empty($_FILES)) {
 
     // Si le dossier uploads n'existe pas déjà, le créer
     if (!file_exists("Assets/IMG/IMG_profile")) {
-        mkdir("IMG_profile");
+        mkdir("IMG_article");
     }
 
     // Identifier le dossier des fichiers uploadés

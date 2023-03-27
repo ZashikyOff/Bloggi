@@ -23,14 +23,12 @@
   background-color: #f3dfc1;
   border-radius: 7px;
 }
-p {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  min-width: 100vh;
+
   background: linear-gradient(to left, #8f94fb, #4e54c8);
 }
 header {
@@ -38,7 +36,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 100%;
 }
 header h1 {
   margin-top: 10px;
@@ -100,7 +98,6 @@ header .panel_article:hover {
   height: 100vh;
   width: 100%;
   background-color: #4e54c8b7;
-  font-family: Rancho,cursive;
   transition: 0.5s ease;
 }
 .modal_container a {
@@ -108,18 +105,6 @@ header .panel_article:hover {
   text-decoration: none;
   font-size: 2rem;
   color: #f3dfc1;
-  transition: 0.5s ease-in-out;
-  padding: 10px;
-}
-.modal_container a:hover {
-  background-color: #4e54c8;
-  padding: 10px;
-  border-radius: 10px;
-  animation: rotateAnimation 2s ease infinite;
-}
-@keyframes rotateAnimation {
-	from {transform: rotateX(0deg);}
-	to {transform: rotateX(360deg);}
 }
 .modal_container .close_mod {
   position: absolute;
@@ -161,6 +146,8 @@ main.index .middle {
   align-items: center;
   min-width: 350px;
   min-height: 350px;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 main.index h2 {
   margin-top: 30px;
@@ -198,8 +185,7 @@ main.index h2 {
   height: fit-content;
   width: 50vw;
   max-width: 450px;
-  padding: 8px;
-  border-radius: 10px;
+  padding: 5px;
 }
 .search i {
   width: 10%;
@@ -249,7 +235,6 @@ main.index h2 {
   height: fit-content;
   width: fit-content;
   margin-bottom: 10px;
-  margin-top: 10px;
   padding: 3px 7px;
   text-decoration: none;
   color: black;
@@ -278,37 +263,41 @@ main.index .middle button {
 main.index .middle button:hover {
   scale: 115%;
 }
-
+div.middle div.carousel{
+  width: 400px;
+  height: 400px;
+  perspective: 800px;
+}
+div.middle div.carousel:hover .new-release{
+  animation-play-state: paused;
+  cursor: grab;
+}
 .new-release {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 350px;
-  height: 350px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  transition: 0.5s ease;
-  scroll-behavior: smooth;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-500px) rotateY(0);
+  transform-style: preserve-3d;
+  animation: carousel 15s infinite cubic-bezier(1, 0.015, 0.295, 1.225) forwards;
 }
 .new-release .article {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-width: 300px;
-  width: 70%;
-  min-height: 325px;
-  height: 80%;
   padding: 10px;
-  background-color: #dadadac0;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #dadada;
   color: #565656;
   font-family: Georgia, "Times New Roman", Times, serif;
-  margin-right: 25px;
-  margin-left: 25px;
-  border-radius: 15px;
-  transition: 0.5s ease;
-  text-align: center;
 }
 .new-release .article img {
   height: 100px;
@@ -364,34 +353,37 @@ main.index .middle button:hover {
   background-color: #368f8b;
   color: white;
 }
+div.middle div.carousel:hover .top-topics{
+  animation-play-state: paused;
+  cursor: grab;
+}
 .top-topics {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 350px;
-  height: 350px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  transition: 0.5s ease;
-  scroll-behavior: smooth;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-500px) rotateY(0);
+  transform-style: preserve-3d;
+  animation: carousel 15s infinite cubic-bezier(1, 0.015, 0.295, 1.225) forwards;
 }
 .top-topics .article {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-width: 300px;
-  width: 70%;
-  min-height: 325px;
-  height: 80%;
   padding: 10px;
-  background-color: #dadadac0;
+  border-radius: 15px;
+  transition: 0.5s ease;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #dadada;
   color: #565656;
   font-family: Georgia, "Times New Roman", Times, serif;
-  margin-right: 25px;
-  margin-left: 25px;
-  border-radius: 15px;
 }
 .top-topics .article img {
   height: 100px;
@@ -530,7 +522,7 @@ main.profile {
   height: 70vh;
   padding: 10px;
   border-radius: 15px;
-  background-color: #eed0a4d6;
+  background-color: #eed0a4;
 }
 
 main.profile .imgprofile {
@@ -568,36 +560,10 @@ main.profile * {
   margin: 5px;
 }
 
-main.profile .infos {
+.infos {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-main.profile .infos a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
-  text-decoration: none;
-  color: #000000;
-}
-main.profile .infos a span{
-  margin: 0;
-  display: block;
-  width: 0;
-  height: 2px;
-  padding: 0 auto;
-  transition: 0.5s ease;
-}
-main.profile .infos a:hover span{
-  margin: 0;
-  display: block;
-  background-color: #000000;
-  background: linear-gradient(to left, #8f94fb, #4e54c8);
-  width: 100%;
-  height: 2px;
 }
 
 /* Page Article Dev */
@@ -619,6 +585,7 @@ main.article .commentaire {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #368f8b9a;
   width: 90%;
   height: fit-content;
 }
@@ -626,7 +593,7 @@ main.article .commentaire form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;
+  background-color: #368f8b9a;
   width: 50%;
   height: fit-content;
 }
@@ -634,8 +601,7 @@ main.article .commentaire form textarea {
   resize: none;
   outline: none;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
   max-height: 350px;
   width: 100%;
   max-width: 400px;
@@ -644,8 +610,6 @@ main.article .commentaire form button {
   padding: 5px;
   border-radius: 10px;
   border: none;
-  background-color: #ffffff;
-  cursor: pointer;
 }
 
 main.article .commentaire .commentairebyarticle {
@@ -671,7 +635,6 @@ main.article .commentaire .commentairebyarticle a {
 main.article .commentaire .commentairebyarticle a i {
   margin: 0;
   margin-top: 5px;
-  color: #000000;
 }
 
 main.article * {
@@ -835,7 +798,7 @@ table.GeneratedTable tbody tr:hover {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 120vh;
+  min-height: 150vh;
   z-index: -1;
   background: linear-gradient(to left, #8f94fb, #4e54c8);
 }
@@ -946,5 +909,94 @@ table.GeneratedTable tbody tr:hover {
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
+  }
+}
+/* Caroussel Article Index */
+
+.carousel {
+  width: 400px;
+  height: 400px;
+  perspective: 800px;
+}
+
+.carousel-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(-500px) rotateY(0);
+  transform-style: preserve-3d;
+  animation: carousel 10s infinite cubic-bezier(1, 0.015, 0.295, 1.225)
+    forwards;
+}
+
+.carousel-item{
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.carousel-item:nth-child(1) {
+  transform: rotateY(0) translateZ(500px);
+}
+
+.carousel-item:nth-child(2) {
+  transform: rotateY(60deg) translateZ(500px);
+}
+
+.carousel-item:nth-child(3) {
+  transform: rotateY(120deg) translateZ(500px);
+}
+
+.carousel-item:nth-child(4) {
+  transform: rotateY(180deg) translateZ(500px);
+}
+
+.carousel-item:nth-child(5) {
+  transform: rotateY(240deg) translateZ(500px);
+}
+
+.carousel-item:nth-child(6) {
+  transform: rotateY(300deg) translateZ(500px);
+}
+
+/* Create a carousel animation  */
+@keyframes carousel {
+  0%,
+  8.3% {
+    transform: translateZ(-500px) rotateY(0);
+  }
+  16.6%,
+  24.9% {
+    transform: translateZ(-500px) rotateY(-60deg);
+  }
+  33.2%,
+  41.5% {
+    transform: translateZ(-500px) rotateY(-120deg);
+  }
+  49.8%,
+  58.1% {
+    transform: translateZ(-500px) rotateY(-180deg);
+  }
+  66.4%,
+  74.7% {
+    transform: translateZ(-500px) rotateY(-240deg);
+  }
+  83%,
+  91.3% {
+    transform: translateZ(-500px) rotateY(-300deg);
+  }
+  100% {
+    transform: translateZ(-500px) rotateY(-360deg);
   }
 }

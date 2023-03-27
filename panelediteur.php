@@ -4,16 +4,20 @@ require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 
 require "Assets/core/Article.php";
+require "Assets/core/Account.php";
 
+use Core\Entity\Account;
 use Core\Entity\Article;
 
 session_name("bloggi");
 session_start();
 
-$sql = "SELECT * FROM article ORDER BY id";
+$sql = "SELECT * FROM article WHERE id_auteur = :id ORDER BY id";
 
 // Préparer la requête
+$id = Account::FindIdByMail($_SESSION["email"]);
 $query = $lienDB->prepare($sql);
+$query->bindParam(':id',$id);
 
 // Exécution de la requête
 if ($query->execute()) {

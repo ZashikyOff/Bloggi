@@ -9,7 +9,7 @@ use Core\Entity\Article;
 session_name("bloggi");
 session_start();
 
-$sql = "SELECT * FROM article ORDER BY id LIMIT 10";
+$sql = "SELECT * FROM article ORDER BY id LIMIT 6";
 
 // Préparer la requête
 $query = $lienDB->prepare($sql);
@@ -19,7 +19,7 @@ if ($query->execute()) {
     // traitement des résultats
     $results = $query->fetchAll();
 }
-$mostlike = "SELECT * FROM article ORDER BY like_article DESC LIMIT 10";
+$mostlike = "SELECT * FROM article ORDER BY like_article DESC LIMIT 6";
 
 // Préparer la requête
 $query2 = $lienDB->prepare($mostlike);
@@ -96,42 +96,45 @@ if ($query2->execute()) {
         </div>
         <h2>Nouveauté</h2>
         <div class="middle">
-            <button id="sliderleft" type="button"><i class="fa-solid fa-caret-left"></i></button>
-            <div class="new-release" id="new">
-                <?php
-                $x = -1;
+            <!-- <button id="sliderleft" type="button"><i class="fa-solid fa-caret-left"></i></button> -->
+            <div class="carousel">
+                <div class="new-release" id="new">
+                    <?php
+                    $x = -1;
 
-                while ($x < (count($results) - 1)) {
-                    $x++;
-                ?><div class="article">
-                        <?php
-                        if (isset($results[$x]["image"])) {
-                        ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
+                    while ($x < (count($results) - 1)) {
+                        $x++;
+                    ?><div class="article carousel-item">
+                            <?php
+                            if (isset($results[$x]["image"])) {
+                            ?><img src="<?= $results[$x]["image"] ?>" alt=""><?php
                                                                         }
                                                                             ?>
-                        <h3><?= $results[$x]["titre"] ?></h3>
-                        <hr>
-                        <p><?= substr($results[$x]["contenu"], 0, 50) ?>...</p>
-                        <p class="likearticle">J'aime : <?= Article::AllComment($results[$x]["id"]) ?></p>
-                        <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
-                        <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
-                    </div><?php
+                            <h3><?= $results[$x]["titre"] ?></h3>
+                            <hr>
+                            <p><?= substr($results[$x]["contenu"], 0, 50) ?>...</p>
+                            <p class="likearticle">J'aime : <?= Article::AllComment($results[$x]["id"]) ?></p>
+                            <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p>
+                            <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
+                        </div><?php
 
-                        }
-                            ?>
+                            }
+                                ?>
+                </div>
             </div>
-            <button id="slideright" type="button"><i class="fa-solid fa-caret-right"></i></button>
+            <!-- <button id="slideright" type="button"><i class="fa-solid fa-caret-right"></i></button> -->
         </div>
         <h2>Top</h2>
         <div class="middle">
             <button id="sliderleftLike" type="button"><i class="fa-solid fa-caret-left"></i></button>
+            <div class="carousel">
             <div class="top-topics" id="top">
                 <?php
                 $x = -1;
 
                 while ($x < (count($resultsmostlike) - 1)) {
                     $x++;
-                ?><div class="article">
+                ?><div class="article carousel-item">
                         <?php
                         if (isset($resultsmostlike[$x]["image"])) {
                         ?><img src="<?= $resultsmostlike[$x]["image"] ?>" alt=""><?php
@@ -147,6 +150,7 @@ if ($query2->execute()) {
 
                         }
                             ?>
+            </div>
             </div>
             <button id="sliderightLike" type="button"><i class="fa-solid fa-caret-right"></i></button>
         </div>
