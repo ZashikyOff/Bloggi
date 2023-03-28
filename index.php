@@ -50,6 +50,7 @@ if ($query2->execute()) {
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
+        <a href="allarticle.php">All Article</a>
         <a href="new_article.php">New Article</a>
         <?php
         if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
@@ -67,7 +68,7 @@ if ($query2->execute()) {
         <a href="new_article.php"><i class="fa-solid fa-plus fa-xl new_article"></i></a>
         <img src="Assets/IMG/logo.png" class="logoblob">
         <h1>Bloggi</h1>
-        <i class="fa-solid fa-bars fa-xl mod"></i>
+        <i class="fa-solid fa-bars fa-2xl mod"></i>
         <p class="etat_co"><?php
                             if (isset($_SESSION["email"])) {
                                 echo "<i class='fa-solid fa-circle fa-2xs' style='color:#F3DFC1'></i>";
@@ -88,7 +89,7 @@ if ($query2->execute()) {
                 }
                     ?>
         <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass "></i>
             <input id="search" type="search" name="name" hx-post="Assets/core/searcharticle.php" h hx-trigger="keyup changed delay:400ms, search" hx-target=".resultarticle" autocomplete="off">
         </div>
         <div class="resultarticle">

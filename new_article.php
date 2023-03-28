@@ -37,6 +37,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
+        <a href="allarticle.php">All Article</a>
         <?php
         if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
             echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
@@ -50,7 +51,6 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <a href="panelediteur.php"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
@@ -161,7 +161,7 @@ if (!isset($_SESSION["role"]) && !isset($_SESSION["email"])) {
         <form action="" method="post" class="add_article" enctype="multipart/form-data">
 
             <label>Titre de l'article </label>
-            <input type="text" name="titre" required>
+            <input type="text" name="titre" required autocomplete="off">
 
             <label>Contenu</label>
             <textarea name="contenu" cols="30" rows="10" required></textarea>

@@ -61,7 +61,7 @@ if (isset($_POST["newcommentaire"])) {
     }
 }
 
-if(isset($_GET["deletecomm"])){
+if (isset($_GET["deletecomm"])) {
 
     $sqldelete = "DELETE FROM commentaire WHERE id=:id";
 
@@ -101,6 +101,7 @@ if(isset($_GET["deletecomm"])){
     <div class="modal_container">
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
+        <a href="allarticle.php">All Article</a>
         <a href="new_article.php">New Article</a>
         <?php
         if (!isset($_SESSION["email"])) {
@@ -115,7 +116,7 @@ if(isset($_GET["deletecomm"])){
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
     </div>
     <header>
-        <a href="new_article.php"><i class="fa-solid fa-plus fa-xl new_article"></i></a>
+        <a href="panelediteur.php?id=<?=$_GET["id"] ?>"><i class="fa-solid fa-gear fa-xl panel_article"></i></a>
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
         <p class="etat_co"><?php
@@ -159,12 +160,12 @@ if(isset($_GET["deletecomm"])){
                     <p><?= nl2br($resultscommentaire[$x]["message"]) ?></p>
                     <p class="author">Auteur : <?= Article::FindAuthor($resultscommentaire[$x]["id_auteur"]); ?></p>
                     <?php
-                    if(isset($_SESSION["email"])){
+                    if (isset($_SESSION["email"])) {
                         if (Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin") {
-                            ?><a href="article.php?id=<?= $_GET["id"] ?>&deletecomm=<?= $resultscommentaire[$x]["id"] ?>"><i class="fa-solid fa-trash-can"></i></a><?php
-                                                                                }
-                    }
-                                                                            ?>
+                    ?><a href="article.php?id=<?= $_GET["id"] ?>&deletecomm=<?= $resultscommentaire[$x]["id"] ?>"><i class="fa-solid fa-trash-can"></i></a><?php
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                                    ?>
                 </div>
             <?php
 
