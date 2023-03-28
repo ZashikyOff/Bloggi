@@ -113,16 +113,16 @@ if ($query->execute()) {
         </ul>
     </div>
     <div class="modal_container">
-        <a href="index.php">Home</a>
-        <a href="new_article.php">New Article</a>
+        <a href="index.php">Home <span></span></a>
+        <a href="new_article.php">New Article <span></span></a>
         <?php
         if (isset($_SESSION["role"]) && Article::FindRoleAccount($_SESSION["email"]) == "admin") {
-            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin <span></span></a>";
         }
         if (!isset($_SESSION["email"])) {
-            echo "<a href='login.php'>Login</a>";
+            echo "<a href='login.php'>Login <span></span></a>";
         } else {
-            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
+            echo "<a href='Assets/core/logout.php'>Se Deconnecter <span></span></a>";
         }
         ?>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>

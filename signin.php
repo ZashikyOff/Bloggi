@@ -1,5 +1,5 @@
 <?php
-$title = "Sign In";
+$title = "Inscription";
 require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 session_name("bloggi");
@@ -78,7 +78,8 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-xl mod"></i>
     </header>
-    <main>
+    <main class="signin">
+        <h2>Inscription</h2>
         <form action="" method="post">
             <input type="text" name="pseudo" placeholder="Pseudo ..." required>
             <input type="text" name="email" placeholder="Email ..." required>
@@ -90,7 +91,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
             <img src="Assets/core/captcha.php" alt="">
             <button>S'inscrire</button>
         </form>
-        <p>Or <a href="login.php">Login</a></p>
+        <p class="linksignin">Or <a href="login.php">Login <span></span></a></p>
     </main>
     <footer>
 

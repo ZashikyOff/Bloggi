@@ -1,5 +1,5 @@
 <?php
-$title = "Acceuil";
+$title = "Tout les Articles";
 require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 require "Assets/core/Article.php";
@@ -42,17 +42,17 @@ if ($query->execute()) {
         </ul>
     </div>
     <div class="modal_container">
-        <a href="index.php">Home</a>
-        <a href="profile.php">Profile</a>
-        <a href="new_article.php">New Article</a>
+        <a href="index.php">Home <span></span></a>
+        <a href="profile.php">Profile <span></span></a>
+        <a href="new_article.php">New Article <span></span></a>
         <?php
         if (!isset($_SESSION["email"])) {
-            echo "<a href='login.php'>Login</a>";
+            echo "<a href='login.php'>Login <span></span></a>";
         } else {
-            echo "<a href='Assets/core/logout.php'>Se Deconnecter</a>";
+            echo "<a href='Assets/core/logout.php'>Se Deconnecter <span></span></a>";
         }
         if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
-            echo "<a href='paneladmin.php?new=yes'>Panel Admin</a>";
+            echo "<a href='paneladmin.php?new=yes'>Panel Admin <span></span></a>";
         }
         ?>
         <i class="fa-solid fa-xmark fa-2xl close_mod"></i>
@@ -84,7 +84,7 @@ if ($query->execute()) {
                                                                                                     }
                                                                                                         ?>
             <h3><?= $results[$x]["titre"] ?></h3>
-            <p><?= $results[$x]["contenu"] ?></p>
+            <p><?= substr($results[$x]["contenu"], 0, 100) . "..." ?></p>
             <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
         <?php
 

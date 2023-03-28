@@ -109,8 +109,20 @@ header .panel_article:hover {
 .modal_container a {
   margin: 15px auto;
   text-decoration: none;
+  height: 40px;
   font-size: 2rem;
   color: #f3dfc1;
+}
+.modal_container a span{
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to left, #ffffff, #ff1313);
+  transition: 0.5s;
+}
+.modal_container a:hover span{
+  width: 100%;
+  height: 2px;
 }
 .modal_container .close_mod {
   position: absolute;
@@ -132,12 +144,156 @@ main form {
 .etat_co {
   position: absolute;
   top: 0px;
-  right: 40px;
+  right: 45px;
   font-size: 1.8rem;
 }
 .etat_co i {
   margin-right: 5px;
 }
+
+/* Page Login */
+
+main.login {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+main.login form{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 50%;
+  margin-top: 20px;
+}
+main.login form *{
+  margin: 10px;
+  font-size: 1.5rem;
+}
+main.login label{
+  font-weight: 900;
+}
+
+main.login form input{
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+main.login form img {
+  width: 80%;
+  height: 30%;
+  border-radius: 10px;
+  margin: auto;
+  user-select: none;
+}
+
+main.login form button {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main.login .linksignin {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+main.login .linksignin a{
+  text-decoration: none;
+  color: black;
+}
+
+main.login .linksignin a span{
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #ffee34;
+  transition: 0.5s ease-in-out;
+}
+
+main.login .linksignin a:hover span{
+  width: 100%;
+}
+/* Page Sign In */
+
+main.signin {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+main.signin form{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 50%;
+  margin-top: 20px;
+}
+main.signin form *{
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+main.signin form input{
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+main.signin form img {
+  width: 80%;
+  height: 30%;
+  border-radius: 10px;
+  margin: auto;
+  user-select: none;
+}
+
+main.signin form button {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main.signin .linksignin {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+main.signin .linksignin a{
+  text-decoration: none;
+  color: black;
+}
+
+main.signin .linksignin a span{
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #ffee34;
+  transition: 0.5s ease-in-out;
+}
+
+main.signin .linksignin a:hover span{
+  width: 100%;
+}
+
+
 /* Page D'acceuil */
 
 main.index {
@@ -271,7 +427,7 @@ main.index .middle button:hover {
 }
 div.middle div.carousel {
   width: 400px;
-  height: 400px;
+  height: 450px;
   perspective: 800px;
 }
 div.middle div.carousel:hover .new-release {
@@ -290,9 +446,7 @@ div.middle div.carousel:hover .new-release {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border-radius: 15px;
+  justify-content: start;
   text-align: center;
   width: 90%;
   height: 100%;
@@ -306,7 +460,8 @@ div.middle div.carousel:hover .new-release {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 .new-release .article img {
-  height: 100px;
+  min-height: 225px;
+  height: 250px;
   width: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
@@ -314,35 +469,18 @@ div.middle div.carousel:hover .new-release {
 .new-release .article h3 {
   width: 100%;
   height: fit-content;
-  margin-top: 5px;
+  margin-top: 5%;
   font-size: 125%;
   text-align: center;
 }
-.new-release .article hr {
-  height: 1px;
-  width: 80%;
-  margin-top: 5px;
-  background-color: black;
-  border: none;
-  outline: none;
-}
+
 .new-release .article p {
   width: 100%;
   height: fit-content;
-  margin-top: 5px;
+  margin-top: 5%;
   font-size: 125%;
 }
-.new-release .article .likearticle {
-  margin-top: 15px;
-  text-align: start;
-}
-.new-release .article .author {
-  width: 100%;
-  height: fit-content;
-  margin-top: 5px;
-  text-align: start;
-  font-size: 125%;
-}
+
 .new-release .article a {
   height: fit-content;
   width: fit-content;
@@ -351,9 +489,8 @@ div.middle div.carousel:hover .new-release {
   color: black;
   font-size: 125%;
   border: 1px solid #368f8b;
-  text-align: end;
-  margin-left: auto;
   transition: 0.5s ease-in;
+  margin-top: 2%;
 }
 .new-release .article a:hover {
   background-color: #368f8b;
@@ -375,12 +512,10 @@ div.middle div.carousel:hover .top-topics {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: start;
   border-radius: 15px;
-  transition: 0.5s ease;
   text-align: center;
-  width: 100%;
+  width: 90%;
   height: 100%;
   border-radius: 5px;
   position: absolute;
@@ -392,7 +527,8 @@ div.middle div.carousel:hover .top-topics {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 .top-topics .article img {
-  height: 100px;
+  min-height: 225px;
+  height: 250px;
   width: 100%;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
@@ -400,35 +536,18 @@ div.middle div.carousel:hover .top-topics {
 .top-topics .article h3 {
   width: 100%;
   height: fit-content;
-  margin-top: 5px;
+  margin-top: 5%;
   font-size: 125%;
   text-align: center;
 }
-.top-topics .article hr {
-  height: 1px;
-  width: 80%;
-  margin-top: 5px;
-  background-color: black;
-  border: none;
-  outline: none;
-}
+
 .top-topics .article p {
   width: 100%;
   height: fit-content;
-  margin-top: 5px;
+  margin-top: 5%;
   font-size: 125%;
 }
-.top-topics .article .likearticle {
-  margin-top: 15px;
-  text-align: start;
-}
-.top-topics .article .author {
-  width: 100%;
-  height: fit-content;
-  margin-top: 5px;
-  text-align: start;
-  font-size: 125%;
-}
+
 .top-topics .article a {
   height: fit-content;
   width: fit-content;
@@ -437,9 +556,8 @@ div.middle div.carousel:hover .top-topics {
   color: black;
   font-size: 125%;
   border: 1px solid #368f8b;
-  text-align: end;
-  margin-left: auto;
   transition: 0.5s ease-in;
+  margin-top: 5%;
 }
 .top-topics .article a:hover {
   background-color: #368f8b;
@@ -453,22 +571,30 @@ div.middle div.carousel:hover .top-topics {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  width: 90%;
   margin-top: 100px;
 }
 .all-article .article {
-  width: 45%;
-  padding: 5px;
-  border: black solid 1px;
-  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+  height: 50vh;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f3dfc1e3;
+  color: #565656;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .all-article .article h3 {
   margin-top: 10px;
-  text-align: center;
+  width: 95%;
+  text-align: start;
 }
 .all-article .article p {
-  margin-top: 5px;
-  margin-left: 2.5%;
+  margin-top: 15px;
   width: 95%;
   text-align: start;
 }
@@ -478,6 +604,9 @@ div.middle div.carousel:hover .top-topics {
   min-width: 300px;
   min-height: 150px;
   height: 325px;
+  border-radius: 10px 10px 0 0;
+  border: transparent 5px solid;
+  object-fit: cover;
 }
 
 .all-article .article a {
@@ -485,9 +614,7 @@ div.middle div.carousel:hover .top-topics {
   height: fit-content;
   width: fit-content;
   padding: 3px 7px;
-  margin: 5px;
-  margin-top: 10px;
-  margin-left: auto;
+  margin: auto 0 20px 0;
   text-decoration: none;
   color: black;
   font-size: 125%;
@@ -591,6 +718,8 @@ main.profile .imgprofile {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 225px;
+  min-height: 225px;
   width: 225px;
   height: 225px;
   max-width: 225px;

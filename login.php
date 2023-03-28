@@ -1,5 +1,5 @@
 <?php
-$title = "Login";
+$title = "Connexion";
 require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 session_name("bloggi");
@@ -69,15 +69,19 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["captcha
     <h1>Bloggi</h1>
     <i class="fa-solid fa-bars fa-xl mod"></i>
   </header>
-  <main>
+  <main class="login">
+    <h2>Connexion</h2>
     <form action="" method="post">
+      <label for="">Email :</label>
       <input type="email" name="email" placeholder="Email" required>
+      <label for="">Password :</label>
       <input type="password" name="password" placeholder="Password" required>
+      <label for="">Captcha :</label>
       <input type="text" name="captcha" placeholder="Captcha" required>
       <img src="Assets/core/captcha.php">
       <button>Se Connecter</button>
     </form>
-    <p>Or <a href="signin.php">Sign in</a></p>
+    <p class="linksignin">Or <a href="signin.php">Sign in <span></span></a></p>
   </main>
   <footer>
 
