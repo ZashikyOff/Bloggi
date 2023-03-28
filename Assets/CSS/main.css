@@ -113,14 +113,14 @@ header .panel_article:hover {
   font-size: 2rem;
   color: #f3dfc1;
 }
-.modal_container a span{
+.modal_container a span {
   display: block;
   width: 0%;
   height: 2px;
   background: linear-gradient(to left, #ffffff, #ff1313);
   transition: 0.5s;
 }
-.modal_container a:hover span{
+.modal_container a:hover span {
   width: 100%;
   height: 2px;
 }
@@ -161,22 +161,22 @@ main.login {
   margin-top: 50px;
 }
 
-main.login form{
+main.login form {
   display: flex;
   flex-direction: column;
   align-items: start;
   width: 50%;
   margin-top: 20px;
 }
-main.login form *{
+main.login form * {
   margin: 10px;
   font-size: 1.5rem;
 }
-main.login label{
+main.login label {
   font-weight: 900;
 }
 
-main.login form input{
+main.login form input {
   width: 100%;
   outline: none;
   border: none;
@@ -207,12 +207,12 @@ main.login .linksignin {
   margin-top: 10px;
 }
 
-main.login .linksignin a{
+main.login .linksignin a {
   text-decoration: none;
   color: black;
 }
 
-main.login .linksignin a span{
+main.login .linksignin a span {
   display: block;
   width: 0%;
   height: 2px;
@@ -220,7 +220,7 @@ main.login .linksignin a span{
   transition: 0.5s ease-in-out;
 }
 
-main.login .linksignin a:hover span{
+main.login .linksignin a:hover span {
   width: 100%;
 }
 /* Page Sign In */
@@ -233,19 +233,19 @@ main.signin {
   margin-top: 50px;
 }
 
-main.signin form{
+main.signin form {
   display: flex;
   flex-direction: column;
   align-items: start;
   width: 50%;
   margin-top: 20px;
 }
-main.signin form *{
+main.signin form * {
   margin: 10px;
   font-size: 1.5rem;
 }
 
-main.signin form input{
+main.signin form input {
   width: 100%;
   outline: none;
   border: none;
@@ -276,12 +276,12 @@ main.signin .linksignin {
   margin-top: 10px;
 }
 
-main.signin .linksignin a{
+main.signin .linksignin a {
   text-decoration: none;
   color: black;
 }
 
-main.signin .linksignin a span{
+main.signin .linksignin a span {
   display: block;
   width: 0%;
   height: 2px;
@@ -289,10 +289,9 @@ main.signin .linksignin a span{
   transition: 0.5s ease-in-out;
 }
 
-main.signin .linksignin a:hover span{
+main.signin .linksignin a:hover span {
   width: 100%;
 }
-
 
 /* Page D'acceuil */
 
@@ -375,12 +374,15 @@ main.index h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #dadadac0;
-  border-radius: 15px 0 15px 0;
-  height: fit-content;
-  min-height: 245px;
-  width: 45%;
+  justify-content: start;
+  width: 35%;
+  height: 50%;
   margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #dadada;
+  color: #565656;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .resultatrecherche h3 {
   margin: 4px;
@@ -388,10 +390,9 @@ main.index h2 {
 }
 .resultatrecherche img {
   width: 100%;
-  height: 50%;
+  height: 350px;
   object-fit: cover;
-  border-radius: 15px 0 0 0;
-  border: #8f94fb 5px solid;
+  border-radius: 5px 5px 0 0;
 }
 .resultatrecherche a {
   height: fit-content;
@@ -488,12 +489,12 @@ div.middle div.carousel:hover .new-release {
   text-decoration: none;
   color: black;
   font-size: 125%;
-  border: 1px solid #368f8b;
+  border: 1px solid #8f94fb;
   transition: 0.5s ease-in;
   margin-top: 2%;
 }
 .new-release .article a:hover {
-  background-color: #368f8b;
+  background-color: #8f94fb;
   color: white;
 }
 div.middle div.carousel:hover .top-topics {
@@ -555,12 +556,12 @@ div.middle div.carousel:hover .top-topics {
   text-decoration: none;
   color: black;
   font-size: 125%;
-  border: 1px solid #368f8b;
+  border: 1px solid #8f94fb;
   transition: 0.5s ease-in;
   margin-top: 5%;
 }
 .top-topics .article a:hover {
-  background-color: #368f8b;
+  background-color: #8f94fb;
   color: white;
 }
 
@@ -618,12 +619,12 @@ div.middle div.carousel:hover .top-topics {
   text-decoration: none;
   color: black;
   font-size: 125%;
-  border: 1px solid #368f8b;
+  border: 1px solid #8f94fb;
   text-align: end;
   transition: 0.5s ease-in;
 }
 .all-article .article a:hover {
-  background-color: #368f8b;
+  background-color: #8f94fb;
   color: white;
 }
 
@@ -775,26 +776,34 @@ main.article .commentaire {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #368f8b9a;
   width: 90%;
   height: fit-content;
+  background-color: #ffffff9a;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
 }
 main.article .commentaire form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #368f8b9a;
-  width: 50%;
+  width: 100%;
   height: fit-content;
+  background-color: #ffffff9a;
+  padding: 10px;
+  margin: 0;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
 main.article .commentaire form textarea {
   resize: none;
   outline: none;
   border: none;
-  padding: 5px;
+  padding: 7px;
   max-height: 350px;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  border-radius: 10px;
+  border: #bf633c solid 1px;
 }
 main.article .commentaire form button {
   padding: 5px;
@@ -805,7 +814,7 @@ main.article .commentaire form button {
 main.article .commentaire .commentairebyarticle {
   height: fit-content;
   width: 60%;
-  background-color: #eed0a4;
+  background-color: #e8b05c;
   padding: 10px;
   border-radius: 10px;
 }
@@ -820,11 +829,15 @@ main.article .commentaire .commentairebyarticle p.author {
 }
 
 main.article .commentaire .commentairebyarticle a {
-  margin-left: 95%;
+  display: block;
+  width: 100%;
+  margin: 0;
+  margin-top: 10px;
+  text-align: end;
 }
 main.article .commentaire .commentairebyarticle a i {
   margin: 0;
-  margin-top: 5px;
+  color: #5d0000;
 }
 
 main.article * {
@@ -851,13 +864,13 @@ main.editeur form {
   width: 50%;
 }
 
-main.editeur form input{
+main.editeur form input {
   width: 300px;
   height: fit-content;
   padding: 5px;
 }
 
-main.editeur form button{
+main.editeur form button {
   width: 150px;
   height: fit-content;
   padding: 5px;
@@ -1089,6 +1102,7 @@ table.GeneratedTable tbody tr:hover {
   top: 0;
   left: 0;
   overflow: hidden;
+  /* -webkit-box-reflect: below -15px linear-gradient(transparent, transparent, #00000020); */
 }
 
 .carousel-item img {

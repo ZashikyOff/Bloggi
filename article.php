@@ -149,10 +149,19 @@ if (isset($_GET["deletecomm"])) {
             ?>
         </div>
         <div class="commentaire">
-            <form action="" method="post">
-                <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..."></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
+        <?php 
+        if(isset($_SESSION["email"])){
+            if(Article::FindRoleAccount($_SESSION["email"]) == "editeur" || Article::FindRoleAccount($_SESSION["email"]) == "admin"){
+                ?>
+                                
+                <form action="" method="post">
+                    <textarea cols="30" rows="10" name="newcommentaire" placeholder="Nouveau Commentaire ..."></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+                <?php
+            }
+        }
+        ?> 
             <?php
             $x = 0;
             while ($x <= (count($resultscommentaire)) - 1) { ?>
@@ -173,6 +182,8 @@ if (isset($_GET["deletecomm"])) {
             }
             ?>
         </div>
+        <?php
+        ?>
     </main>
     <footer>
 

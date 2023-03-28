@@ -26,8 +26,6 @@ while ($row = $result->fetch()) : ?>
         ?><img src="<?= $row["image"] ?>" alt=""><?php
                                                 } ?>
         <h3><?= htmlspecialchars($row['titre']); ?></h3>
-        <hr>
-        <p class="author">Auteur : <?= Article::FindAuthor($row["id_auteur"]); ?></p>
         <a href="../../article.php?id=<?= htmlspecialchars($row['id']); ?>">Suite</a>
     </div>
 
