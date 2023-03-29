@@ -56,30 +56,6 @@ if (!empty($_FILES)) {
             $results = $query->fetch();
         }
     }
-
-    // Envoi multiple
-    if (isset($_FILES["fichiers"])) {
-        foreach ($_FILES["fichiers"]["tmp_name"] as $index => $tempFile) {
-            // Attention à bien garder l'index du fichier traité pour récupérer le nom original ensuite !
-            // Récupérer le nom original du fichier uploadé et créer le futur chemin complet
-            $target_file = $target_dir . basename($_FILES["fichiers"]["name"][$index]);
-
-            // Déplacer et renommer le fichier uploadé
-            move_uploaded_file($tempFile, $target_file);
-        }
-    }
-
-    // Envoi d'un dossier complet
-    if (isset($_FILES["dossier"])) {
-        foreach ($_FILES["dossier"]["tmp_name"] as $index => $tempFile) {
-            // Attention à bien garder l'index du fichier traité pour récupérer le nom original ensuite !
-            // Récupérer le nom original du fichier uploadé et créer le futur chemin complet
-            $target_file = $target_dir . basename($_FILES["dossier"]["name"][$index]);
-
-            // Déplacer et renommer le fichier uploadé
-            move_uploaded_file($tempFile, $target_file);
-        }
-    }
 }
 
 $sql = "SELECT * FROM utilisateur WHERE email=:email";

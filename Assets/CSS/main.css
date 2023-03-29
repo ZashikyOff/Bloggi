@@ -52,9 +52,9 @@ header h1 {
   color: #dadada;
 }
 header .logoblob {
-  height: 150px;
-  width: 150px;
-  margin-top: 15px;
+  height: 200px;
+  width: 200px;
+  margin-top: 5px;
   object-fit: cover;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
@@ -149,6 +149,14 @@ main form {
 }
 .etat_co i {
   margin-right: 5px;
+}
+h2 {
+  text-align: center;
+  color: #eed0a4;
+  font-size: 3rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family: Rancho, cursive;
 }
 
 /* Page Login */
@@ -311,7 +319,11 @@ main.index .middle {
   margin-bottom: 50px;
 }
 main.index h2 {
-  margin-top: 30px;
+  text-align: center;
+  color: #eed0a4;
+  font-size: 3rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
   font-family: Rancho, cursive;
 }
 .alarm {
@@ -339,14 +351,19 @@ main.index h2 {
 }
 .search {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   margin-top: 50px;
-  background-color: #dadadac0;
+  background-color: #e1dee9;
   height: fit-content;
   width: 50vw;
   max-width: 450px;
   padding: 5px;
+  border-radius: 15px;
+}
+.search .image-loupe {
+  width: 15%;
+  border-radius: 15px;
 }
 .search i {
   width: 10%;
@@ -356,6 +373,7 @@ main.index h2 {
   border: none;
   width: 90%;
   background-color: transparent;
+  font-size: 1.5rem;
 }
 .resultarticle {
   display: flex;
@@ -451,7 +469,7 @@ div.middle div.carousel:hover .new-release {
   text-align: center;
   width: 90%;
   height: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -478,7 +496,7 @@ div.middle div.carousel:hover .new-release {
 .new-release .article p {
   width: 100%;
   height: fit-content;
-  margin-top: 5%;
+  margin-top: 2%;
   font-size: 125%;
 }
 
@@ -518,7 +536,7 @@ div.middle div.carousel:hover .top-topics {
   text-align: center;
   width: 90%;
   height: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -537,7 +555,7 @@ div.middle div.carousel:hover .top-topics {
 .top-topics .article h3 {
   width: 100%;
   height: fit-content;
-  margin-top: 5%;
+  margin-top: 2%;
   font-size: 125%;
   text-align: center;
 }
@@ -628,6 +646,81 @@ div.middle div.carousel:hover .top-topics {
   color: white;
 }
 
+/*************************ALL ARTICLE****************************/
+
+.article-dispo {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.tous-article {
+  text-align: center;
+  color: #eed0a4;
+  font-size: 3rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family: Rancho, cursive;
+}
+
+main.article-dispo .article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  max-width: 40vh;
+  height: 70vh;
+  margin: 10px;
+  background-color: #dadada;
+  color: #565656;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.article-dispo .article img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.article-dispo .article h3 {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.article-dispo .article p {
+  font-size: 1.5rem;
+  width: 98%;
+}
+
+.article-dispo .article .author {
+  margin-top: auto;
+  text-align: end;
+}
+
+.article-dispo .article a {
+  height: fit-content;
+  width: fit-content;
+  padding: 3px 7px;
+  text-decoration: none;
+  color: black;
+  font-size: 125%;
+  border: 1px solid #8f94fb;
+  transition: 0.5s ease-in;
+  margin-top:auto;
+  margin-bottom: 2%;
+}
+.article-dispo .article a:hover {
+  background-color: #8f94fb;
+  color: white;
+}
+
 /* Page New article */
 
 main.new_article {
@@ -645,26 +738,35 @@ main.new_article {
 }
 
 main.new_article h2 {
-  color: black;
   text-align: center;
-  margin-top: 30px;
-  font-size: 2.5rem;
+  color: #eed0a4;
+  font-size: 3rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
   font-family: Rancho, cursive;
+}
+
+.add_article label {
+  font-size: 1.5rem;
+  color: #e1dee9;
 }
 
 .add_article input {
   width: 100%;
-  height: 30px;
+  height: 40px;
   border: none;
+  border-radius: 15px;
   margin-bottom: 20px;
   margin-top: 10px;
   font-size: 1.5rem;
   padding-left: 5px;
   outline: none;
+  color: #e1dee9;
 }
 
 .add_article textarea {
   border: none;
+  border-radius: 15px;
   height: 300px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -681,6 +783,12 @@ main.new_article h2 {
   width: 50%;
   margin-top: 50px;
   font-size: 1.5rem;
+  border-radius: 15px;
+  border: none;
+}
+
+.add_article button:hover {
+  cursor: pointer;
 }
 
 .image_article {
@@ -711,7 +819,7 @@ main.profile {
   height: 70vh;
   padding: 10px;
   border-radius: 15px;
-  background-color: #eed0a4;
+  background-color: #d5cfe1;
 }
 
 main.profile .imgprofile {
@@ -719,13 +827,8 @@ main.profile .imgprofile {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 225px;
-  min-height: 225px;
   width: 225px;
   height: 225px;
-  max-width: 225px;
-  max-height: 225px;
-  border: #368f8b solid 4px;
   border-radius: 50%;
   overflow: hidden;
   clear: right;
@@ -738,7 +841,6 @@ main.profile .imgprofile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
   margin: 0;
   scale: 120%;
   transition: 0.5s ease-in-out;
@@ -754,7 +856,12 @@ main.profile * {
 .infos {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 1.5;
 }
 
 /* Page Article Dev */
@@ -763,6 +870,7 @@ main.article {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 main.article div.article {
@@ -772,6 +880,24 @@ main.article div.article {
   width: 90%;
   margin-top: 50px;
 }
+
+main.article * {
+  margin: 10px;
+}
+
+main.article img {
+  width: 55%;
+  height: 40%;
+  object-fit: cover;
+}
+
+main.article .likearticle {
+  margin-right: auto;
+}
+main.article .author {
+  margin-left: auto;
+}
+
 main.article .commentaire {
   display: flex;
   flex-direction: column;
@@ -840,21 +966,7 @@ main.article .commentaire .commentairebyarticle a i {
   color: #5d0000;
 }
 
-main.article * {
-  margin: 10px;
-}
 
-main.article img {
-  width: 60%;
-  object-fit: cover;
-}
-
-main.article .likearticle {
-  margin-right: auto;
-}
-main.article .author {
-  margin-left: auto;
-}
 /* Panel Editeur ---------------------------------------*/
 
 main.editeur form {

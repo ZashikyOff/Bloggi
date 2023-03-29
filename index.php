@@ -1,5 +1,5 @@
 <?php
-$title = "Acceuil";
+$title = "Accueil";
 require_once "Assets/core/config.php";
 require_once "Assets/core/header.php";
 require "Assets/core/Article.php";
@@ -66,7 +66,7 @@ if ($query2->execute()) {
     </div>
     <header>
         <a href="new_article.php"><i class="fa-solid fa-plus fa-xl new_article"></i></a>
-        <img src="Assets/IMG/logo.png" class="logoblob">
+        <img src="Assets/IMG/blop griotte.png" class="logoblob">
         <h1>Bloggi</h1>
         <i class="fa-solid fa-bars fa-2xl mod"></i>
         <p class="etat_co"><?php
@@ -83,13 +83,13 @@ if ($query2->execute()) {
         <?php
         if (isset($_GET["error"]) && $_GET["error"] == "no-account") {
         ?><div class="alarm">
-                <p>Vous devez vous creer un compte pour pouvoir ecrire un article ou voir votre profile</p>
+                <p>Vous devez vous creer un compte pour pouvoir écrire un article ou voir votre profil</p>
                 <a href="index.php">OK</a>
             </div><?php
                 }
                     ?>
-        <div class="search">
-            <i class="fa-solid fa-magnifying-glass "></i>
+       <div class="search">
+            <img src="Assets/IMG/korone-detective.gif" alt="" class="image-loupe">
             <input id="search" type="search" name="name" hx-post="Assets/core/searcharticle.php" h hx-trigger="keyup changed delay:400ms, search" hx-target=".resultarticle" autocomplete="off">
         </div>
         <div class="resultarticle">
@@ -113,9 +113,9 @@ if ($query2->execute()) {
                                                                             ?>
                             <h3><?= $results[$x]["titre"] ?></h3>
                             <p><?= substr($results[$x]["contenu"], 0, 50) ?>...</p>
-                            <!-- <p class="likearticle">J'aime : <?= Article::AllComment($results[$x]["id"]) ?></p> -->
+                            <p class="likearticle">Comments : <?= Article::AllComment($results[$x]["id"]) ?></p>
                             <!-- <p class="author">Auteur : <?= Article::FindAuthor($results[$x]["id_auteur"]); ?></p> -->
-                            <a href="../../article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
+                            <a href="/article.php?id=<?= $results[$x]["id"] ?>">Suite</a>
                         </div><?php
 
                             }
@@ -142,7 +142,7 @@ if ($query2->execute()) {
                                                                                     ?>
                         <h3><?= $resultsmostlike[$x]["titre"] ?></h3>
                         <p><?= substr($resultsmostlike[$x]["contenu"], 0, 50) ?>...</p>
-                        <!-- <p class="likearticle">J'aime : <?= Article::AllComment($resultsmostlike[$x]["id"]) ?></p> -->
+                        <p class="likearticle">Comments : <?= Article::AllComment($resultsmostlike[$x]["id"]) ?></p>
                         <!-- <p class="author">Auteur : <?= Article::FindAuthor($resultsmostlike[$x]["id_auteur"]); ?></p> -->
                         <a href="../../article.php?id=<?= $resultsmostlike[$x]["id"] ?>">Suite</a>
                     </div><?php
